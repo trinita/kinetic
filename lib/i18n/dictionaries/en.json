@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kinetic — Wood Workshop",
-    "description": "Kinetic is a wood workshop making handmade, made-to-order furniture and wood products."
+    "description": "Kinetic is the wood workshop behind Wood Knots — handmade furniture and wood pieces, carved and painted to order."
   },
   "nav": {
     "home": "Home",
@@ -21,7 +21,7 @@
     "switchLanguage": "Change language"
   },
   "home": {
-    "eyebrow": "Wood workshop",
+    "eyebrow": "The workshop behind Wood Knots",
     "title": "Made by hand, built to last a lifetime.",
     "lead": "Tables, chairs, shelves and other wood pieces made in our own workshop — from choosing the timber to the final finish. Tell us what you need and we'll build it.",
     "ctaProducts": "See products",
@@ -33,12 +33,12 @@
     "back": "Back to home"
   },
   "footer": {
-    "tagline": "Handmade furniture and wood products, made to order.",
+    "tagline": "The workshop behind Wood Knots. Handmade furniture and wood products, made to order.",
     "explore": "Explore",
     "contact": "Get in touch",
-    "addressPending": "Workshop address coming soon",
-    "hoursPending": "Opening hours coming soon",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "hours": "Sunday–Friday, 9 am – 5 pm (WIB)",
+    "closed": "Closed on Saturdays"
   },
   "notFound": {
     "title": "Page not found",

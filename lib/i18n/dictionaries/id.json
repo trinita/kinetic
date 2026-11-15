@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kinetic — Bengkel Kayu",
-    "description": "Kinetic adalah bengkel kayu yang membuat furnitur dan produk kayu buatan tangan, sesuai pesanan."
+    "description": "Kinetic adalah bengkel kayu di balik Wood Knots — furnitur dan produk kayu buatan tangan, diukir dan dilukis sesuai pesanan."
   },
   "nav": {
     "home": "Beranda",
@@ -21,7 +21,7 @@
     "switchLanguage": "Ganti bahasa"
   },
   "home": {
-    "eyebrow": "Bengkel kayu",
+    "eyebrow": "Bengkel kayu di balik Wood Knots",
     "title": "Dibuat dengan tangan, untuk dipakai seumur hidup.",
     "lead": "Meja, kursi, rak, dan produk kayu lainnya yang kami kerjakan di bengkel sendiri — dari memilih kayu hingga finishing terakhir. Ceritakan kebutuhan Anda, kami buatkan.",
     "ctaProducts": "Lihat produk",
@@ -33,12 +33,12 @@
     "back": "Kembali ke beranda"
   },
   "footer": {
-    "tagline": "Furnitur dan produk kayu buatan tangan, dikerjakan sesuai pesanan.",
+    "tagline": "Bengkel kayu di balik Wood Knots. Furnitur dan produk kayu buatan tangan, dikerjakan sesuai pesanan.",
     "explore": "Jelajahi",
     "contact": "Hubungi kami",
-    "addressPending": "Alamat bengkel segera hadir",
-    "hoursPending": "Jam buka segera hadir",
-    "rights": "Hak cipta dilindungi."
+    "rights": "Hak cipta dilindungi.",
+    "hours": "Minggu–Jumat, 09.00–17.00 WIB",
+    "closed": "Sabtu tutup"
   },
   "notFound": {
     "title": "Halaman tidak ditemukan",

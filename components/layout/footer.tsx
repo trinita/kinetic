@@ -52,8 +52,32 @@ export async function Footer() {
                 {site.whatsappDisplay}
               </a>
             </li>
-            <li>{dict.footer.addressPending}</li>
-            <li>{dict.footer.hoursPending}</li>
+            <li>
+              <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-krem">
+                <address className="not-italic">
+                  {site.address.street}
+                  <br />
+                  {site.address.area}
+                  <br />
+                  {site.address.city}
+                </address>
+              </a>
+            </li>
+            <li>
+              {dict.footer.hours}
+              <br />
+              {dict.footer.closed}
+            </li>
+            <li>
+              <a
+                href={site.instagram.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-krem"
+              >
+                Instagram {site.instagram.handle}
+              </a>
+            </li>
           </ul>
         </div>
       </div>

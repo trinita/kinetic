@@ -4,3 +4,4 @@ package-lock.json
 brand
 playwright-report
 test-results
+content/**/*.mdx

@@ -124,10 +124,12 @@ NEXT_PUBLIC_WHATSAPP_NUMBER=6281399325549   # wa.me format: no +, spaces or dash
 
 - Enquiries only (no online sales); all enquiries go to WhatsApp at +62 813-9932-5549.
 - Indonesian main language, English translation.
-- Real product photos supplied by Kinetic.
+- Kinetic is presented as "the workshop behind Wood Knots" (Instagram @_woodknots).
+- Address: Jl. Wibawa Mukti II No.39, RT.001/RW.004, Jatiluhur, Kec. Jatiasih, Kota Bekasi, Jawa Barat 17425. Open Sunday–Friday 09.00–17.00 WIB, closed Saturday.
+- Product photos: 5 photos of 2 products taken from Instagram (`public/images/products/`); drafts in `content/products/` await details.
 - Logo: concept B with lowercase "kinetic" wordmark; palette and fonts as in section 6.
 
 ## 11. Open questions
 
-- Workshop address and opening hours.
+- Product details for the 2 drafts (`content/products/*.mdx`, every `TODO`) and more products/photos.
 - Who writes the copy and the English translations?
