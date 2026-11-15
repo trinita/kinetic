@@ -16,8 +16,10 @@
     "prebuild": "npm run search:index"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
     "minisearch": "^7.2.0",
     "next": "16.4.6",
+    "openai": "^7.57.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-markdown": "^10.1.0",

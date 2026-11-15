@@ -15,5 +15,7 @@ export default defineConfig({
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
+    // Scripted chat replies: tests never call a real AI provider.
+    env: { AI_PROVIDER: "mock" },
   },
 });

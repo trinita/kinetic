@@ -180,5 +180,25 @@
       "member": "Tim",
       "page": "Info"
     }
+  },
+  "chat": {
+    "open": "Tanya kami",
+    "title": "Asisten Kinetic",
+    "subtitle": "Biasanya menjawab dalam beberapa detik",
+    "greeting": "Halo! Saya asisten Kinetic. Tanyakan apa saja tentang produk, cara memesan, atau jam buka bengkel kami.",
+    "suggestions": ["Bagaimana cara memesan?", "Jam buka bengkel?", "Bisa buat meja sesuai ukuran?"],
+    "placeholder": "Tulis pertanyaan…",
+    "send": "Kirim",
+    "close": "Tutup obrolan",
+    "reset": "Mulai ulang",
+    "thinking": "Sedang mengetik…",
+    "searching": "Mencari di situs…",
+    "whatsappCta": "Lanjutkan di WhatsApp",
+    "whatsappNote": "Pesan sudah disiapkan — tinggal kirim.",
+    "error": "Maaf, asisten sedang tidak bisa menjawab. Silakan hubungi kami lewat WhatsApp.",
+    "rateLimited": "Terlalu banyak pertanyaan dalam waktu singkat. Coba lagi beberapa menit lagi, atau hubungi kami via WhatsApp.",
+    "disclaimer": "Asisten AI — bisa keliru. Harga dan pesanan selalu dikonfirmasi lewat WhatsApp. Percakapan diproses oleh penyedia AI dan tidak kami simpan.",
+    "askAboutProduct": "Tanya asisten tentang produk ini",
+    "askAboutProductMessage": "Ceritakan tentang {title}."
   }
 }

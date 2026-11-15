@@ -46,7 +46,8 @@ test("draft products stay hidden on the live site", async ({ page }) => {
   // Detail pages stream, so a hidden product is a "not found" page marked noindex (status stays 200).
   await page.goto("/produk/meja-ukir-lukis-tropis");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Halaman tidak ditemukan");
-  await expect(page.locator('meta[name="robots"][content*="noindex"]')).toHaveCount(1);
+  // Next may add its own noindex tag next to the page's; at least one must be present.
+  expect(await page.locator('meta[name="robots"][content*="noindex"]').count()).toBeGreaterThan(0);
 });
 
 test("contact form opens WhatsApp with the enquiry filled in", async ({ page, context }) => {
@@ -85,7 +86,8 @@ test("search page finds workshop info without JavaScript-dependent UI", async ({
 });
 
 test("search dialog opens from the header and navigates to a result", async ({ page, isMobile }) => {
-  await page.goto("/");
+  // Wait for the page to become interactive before using the keyboard shortcut.
+  await page.goto("/", { waitUntil: "networkidle" });
   if (isMobile) await page.getByRole("link", { name: "Cari di situs" }).click();
   else await page.keyboard.press("ControlOrMeta+k");
   const input = page.getByRole("combobox", { name: "Cari di situs" });
@@ -101,4 +103,37 @@ test("search API returns results for the requested language", async ({ request }
   expect(res.ok()).toBe(true);
   const body = await res.json();
   expect(body.results[0]).toMatchObject({ type: "page", url: "/en/about" });
+});
+
+test("chat assistant answers from the site and hands orders to WhatsApp", async ({ page }) => {
+  await page.goto("/", { waitUntil: "networkidle" });
+  await page.getByRole("button", { name: "Tanya kami" }).click();
+  const chat = page.getByRole("dialog", { name: "Asisten Kinetic" });
+  await expect(chat).toBeVisible();
+
+  const box = chat.getByRole("textbox");
+  await box.fill("jam buka");
+  await box.press("Enter");
+  await expect(chat.getByRole("link", { name: "Kontak" })).toHaveAttribute("href", "/kontak");
+
+  await box.fill("Saya mau pesan meja");
+  await chat.getByRole("button", { name: "Kirim" }).click();
+  const whatsapp = chat.getByRole("link", { name: "Lanjutkan di WhatsApp" });
+  await expect(whatsapp).toHaveAttribute("href", /^https:\/\/wa\.me\/6281399325549\?text=/);
+
+  // The conversation survives navigating to another page.
+  await page.goto("/kontak");
+  await page.getByRole("button", { name: "Tanya kami" }).click();
+  await expect(page.getByRole("dialog").getByText("Saya mau pesan meja")).toBeVisible();
+});
+
+test("chat API rejects other websites and malformed requests", async ({ request }) => {
+  const body = { locale: "id", messages: [{ role: "user", content: "halo" }] };
+  const crossSite = await request.post("/api/chat", {
+    data: body,
+    headers: { origin: "https://evil.example" },
+  });
+  expect(crossSite.status()).toBe(403);
+  const bad = await request.post("/api/chat", { data: { locale: "id", messages: [] } });
+  expect(bad.status()).toBe(400);
 });

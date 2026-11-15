@@ -12,6 +12,8 @@ import { DraftBadge } from "@/components/ui/badges";
 import { NotTranslatedNotice } from "@/components/ui/page-header";
 import { Prose } from "@/components/ui/prose";
 import { WhatsAppButton } from "@/components/ui/links";
+import { AskButton } from "@/components/chat/ask-button";
+import { chatEnabled } from "@/lib/ai/config";
 
 export async function generateStaticParams() {
   const locale = await lang();
@@ -114,12 +116,20 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
               : t.priceAsk}
           </p>
 
-          <WhatsAppButton
-            message={fill(t.enquireMessage, { title: product.title, url })}
-            className="mt-6 w-full sm:w-auto"
-          >
-            {t.enquire}
-          </WhatsAppButton>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <WhatsAppButton
+              message={fill(t.enquireMessage, { title: product.title, url })}
+              className="w-full sm:w-auto"
+            >
+              {t.enquire}
+            </WhatsAppButton>
+
+            {chatEnabled() && (
+              <AskButton question={fill(dict.chat.askAboutProductMessage, { title: product.title })}>
+                {dict.chat.askAboutProduct}
+              </AskButton>
+            )}
+          </div>
 
           <dl className="border-border mt-8 divide-y divide-[var(--border)] border-y">
             {facts

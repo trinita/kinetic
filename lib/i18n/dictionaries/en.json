@@ -180,5 +180,25 @@
       "member": "Team",
       "page": "Info"
     }
+  },
+  "chat": {
+    "open": "Ask us",
+    "title": "Kinetic assistant",
+    "subtitle": "Usually replies in a few seconds",
+    "greeting": "Hi! I'm the Kinetic assistant. Ask me anything about our products, how to order, or the workshop's opening hours.",
+    "suggestions": ["How do I order?", "When is the workshop open?", "Can you make a table to my size?"],
+    "placeholder": "Type a question…",
+    "send": "Send",
+    "close": "Close chat",
+    "reset": "Start over",
+    "thinking": "Typing…",
+    "searching": "Searching the site…",
+    "whatsappCta": "Continue on WhatsApp",
+    "whatsappNote": "Your message is ready — just send it.",
+    "error": "Sorry, the assistant can't answer right now. Please contact us on WhatsApp.",
+    "rateLimited": "Too many questions in a short time. Please try again in a few minutes, or contact us on WhatsApp.",
+    "disclaimer": "AI assistant — it can make mistakes. Prices and orders are always confirmed on WhatsApp. Conversations are processed by an AI provider and not stored by us.",
+    "askAboutProduct": "Ask the assistant about this piece",
+    "askAboutProductMessage": "Tell me about {title}."
   }
 }

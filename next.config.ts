@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   // Search reads content and vectors from disk at request time; make sure they ship with the server.
   outputFileTracingIncludes: {
     "/api/search": ["./content/**/*", "./data/**/*"],
+    "/api/chat": ["./content/**/*", "./data/**/*"],
     "/*/search": ["./content/**/*", "./data/**/*"],
   },
   partialPrefetching: true,

@@ -10,8 +10,9 @@ import type { Locale } from "@/lib/i18n/routing";
 import { bodyHasTodo, parseDoc } from "./parse";
 import * as s from "./schemas";
 
-// CONTENT_DIR / SHOW_DRAFTS can be overridden (used by tests).
-const contentDir = () => process.env.CONTENT_DIR ?? path.join(process.cwd(), "content");
+// A fixed path so the bundler ships only content/ (tests point process.cwd() at fixtures instead).
+// SHOW_DRAFTS can be overridden (used by tests and the search index script).
+const contentDir = () => path.join(process.cwd(), "content");
 const showDrafts = () =>
   process.env.SHOW_DRAFTS ? process.env.SHOW_DRAFTS === "true" : process.env.NODE_ENV !== "production";
 
