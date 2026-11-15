@@ -5,3 +5,4 @@ brand
 playwright-report
 test-results
 content/**/*.mdx
+tests/fixtures

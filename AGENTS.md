@@ -28,6 +28,8 @@ Next.js 16 (App Router, Cache Components) + TypeScript + Tailwind CSS v4. Conten
 - Pages live in `app/[lang]/<english-segment>`. Indonesian URLs are mapped in `lib/i18n/routing.ts` (`routes`) and rewritten by `proxy.ts`; always build links with `href(locale, key)`.
 - Colours: use semantic Tailwind tokens (`bg-bg`, `text-fg`, `text-muted`, `bg-surface`, `border-border`, `text-accent`, `bg-accent-strong`) so dark mode works; brand colours (`walnut`, `jati`, `oak`, `krem`, `lumut`, `arang`) are for fixed-colour areas like the footer.
 - WhatsApp links: `whatsappLink(message)` from `lib/site.ts`.
+- Content lives in `content/` (see `content/README.md`) and is read only through `lib/content` (`getProducts`, `getArticles`, …). Indonesian files hold the facts; English files hold translated text only. `TODO` values count as missing; drafts show in dev and are hidden in production; a published entry with TODOs fails the build on purpose.
+- Detail pages (`[slug]`) list their params with `slugParams()` (Cache Components needs at least one) and set `export const instant = false`.
 
 ## Commands
 

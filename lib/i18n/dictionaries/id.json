@@ -26,7 +26,33 @@
     "lead": "Meja, kursi, rak, dan produk kayu lainnya yang kami kerjakan di bengkel sendiri — dari memilih kayu hingga finishing terakhir. Ceritakan kebutuhan Anda, kami buatkan.",
     "ctaProducts": "Lihat produk",
     "ctaWhatsapp": "Pesan via WhatsApp",
-    "whatsappMessage": "Halo Kinetic, saya ingin bertanya tentang produk kayu Anda."
+    "whatsappMessage": "Halo Kinetic, saya ingin bertanya tentang produk kayu Anda.",
+    "featuredTitle": "Karya pilihan",
+    "featuredIntro": "Beberapa karya yang baru saja selesai di bengkel kami.",
+    "seeAll": "Lihat semua produk",
+    "processTitle": "Cara memesan",
+    "processIntro": "Semua karya dibuat sesuai pesanan. Begini prosesnya:",
+    "steps": [
+      {
+        "title": "Ceritakan kebutuhan Anda",
+        "body": "Kirim pesan via WhatsApp: ukuran, fungsi, warna, atau foto contoh."
+      },
+      {
+        "title": "Desain & penawaran",
+        "body": "Kami bantu menyesuaikan desain dan memberi penawaran harga serta waktu pengerjaan."
+      },
+      {
+        "title": "Dikerjakan di bengkel",
+        "body": "Kayu dipilih, diukir, dilukis, dan di-finishing dengan tangan di bengkel kami di Bekasi."
+      },
+      {
+        "title": "Siap diambil atau dikirim",
+        "body": "Karya Anda bisa diambil langsung di bengkel atau kami bantu atur pengirimannya."
+      }
+    ],
+    "ctaTitle": "Punya ide furnitur sendiri?",
+    "ctaBody": "Ceritakan kepada kami. Kami senang membantu mewujudkannya.",
+    "ctaButton": "Ngobrol via WhatsApp"
   },
   "placeholder": {
     "comingSoon": "Halaman ini sedang kami siapkan.",
@@ -44,5 +70,99 @@
     "title": "Halaman tidak ditemukan",
     "body": "Maaf, halaman yang Anda cari tidak ada atau sudah dipindahkan.",
     "back": "Kembali ke beranda"
+  },
+  "common": {
+    "draft": "Draf",
+    "notTranslated": "Halaman ini belum tersedia dalam bahasa Inggris.",
+    "whatsapp": "Tanya via WhatsApp",
+    "seeInstagram": "Lihat karya terbaru di Instagram",
+    "back": "Kembali"
+  },
+  "products": {
+    "intro": "Furnitur dan produk kayu buatan tangan. Semua bisa ditanyakan via WhatsApp — termasuk ukuran dan motif sesuai keinginan Anda.",
+    "filterLabel": "Filter kategori",
+    "all": "Semua",
+    "madeToOrder": "Bisa dipesan",
+    "oneOff": "Karya tunggal",
+    "empty": "Katalog sedang kami siapkan. Sementara itu, lihat karya terbaru kami di Instagram atau tanya langsung via WhatsApp.",
+    "details": "Detail",
+    "wood": "Kayu",
+    "finish": "Finishing",
+    "size": "Ukuran",
+    "leadTime": "Waktu pengerjaan",
+    "weeks": "{n} minggu",
+    "price": "Harga",
+    "priceFrom": "Mulai {price}",
+    "priceAsk": "Tanya harga via WhatsApp",
+    "customizable": "Bisa disesuaikan",
+    "availability": "Ketersediaan",
+    "enquire": "Pesan via WhatsApp",
+    "enquireMessage": "Halo Kinetic, saya tertarik dengan {title}: {url}",
+    "allProducts": "Semua produk"
+  },
+  "categories": {
+    "meja": "Meja",
+    "kursi": "Kursi",
+    "bangku": "Bangku",
+    "rak": "Rak",
+    "lemari": "Lemari",
+    "dekorasi": "Dekorasi",
+    "lainnya": "Lainnya"
+  },
+  "services": {
+    "intro": "Selain produk di katalog, kami mengerjakan pesanan sesuai kebutuhan Anda.",
+    "empty": "Daftar layanan sedang kami siapkan. Tanyakan langsung kebutuhan Anda via WhatsApp.",
+    "ask": "Tanyakan layanan ini",
+    "askMessage": "Halo Kinetic, saya ingin bertanya tentang layanan {title}."
+  },
+  "articles": {
+    "blogIntro": "Tips merawat kayu, cerita dari bengkel, dan proses di balik karya kami.",
+    "caseIntro": "Karya yang sudah kami kerjakan untuk rumah, kafe, dan ruang lainnya.",
+    "empty": "Belum ada tulisan. Ikuti kabar terbaru kami di Instagram.",
+    "readMore": "Baca selengkapnya",
+    "all": "Semua tulisan",
+    "allProjects": "Semua proyek",
+    "location": "Lokasi",
+    "relatedProducts": "Produk terkait"
+  },
+  "about": {
+    "lead": "Kinetic adalah bengkel kayu di Jatiasih, Bekasi — bengkel di balik Wood Knots. Kami membuat furnitur dan produk kayu dengan tangan, dari memilih kayu hingga finishing terakhir.",
+    "valuesTitle": "Yang kami pegang",
+    "values": [
+      {
+        "title": "Buatan tangan",
+        "body": "Setiap karya diukir, dilukis, dan di-finishing dengan tangan."
+      },
+      {
+        "title": "Sesuai pesanan",
+        "body": "Ukuran, warna, dan motif bisa disesuaikan dengan ruang Anda."
+      },
+      {
+        "title": "Dari bengkel sendiri",
+        "body": "Dikerjakan di bengkel kami di Bekasi, yang bisa Anda kunjungi."
+      }
+    ],
+    "visitTitle": "Kunjungi bengkel",
+    "teamLink": "Kenali tim kami"
+  },
+  "team": {
+    "intro": "Orang-orang di balik setiap karya.",
+    "empty": "Profil tim segera hadir."
+  },
+  "contact": {
+    "intro": "Cara tercepat menghubungi kami adalah lewat WhatsApp. Anda juga bisa datang langsung ke bengkel.",
+    "formTitle": "Kirim pertanyaan",
+    "name": "Nama",
+    "interest": "Yang ingin ditanyakan",
+    "interestPlaceholder": "Contoh: meja makan 6 kursi, kayu jati",
+    "message": "Pesan",
+    "messagePlaceholder": "Ukuran, warna, kapan dibutuhkan, atau pertanyaan lain",
+    "send": "Lanjut ke WhatsApp",
+    "note": "Tombol ini membuka WhatsApp dengan pesan Anda yang sudah terisi. Kami tidak menyimpan data dari formulir ini.",
+    "template": "Halo Kinetic, saya {name}.\nSaya ingin bertanya tentang: {interest}\n\n{message}",
+    "addressTitle": "Alamat bengkel",
+    "hoursTitle": "Jam buka",
+    "directions": "Petunjuk arah di Google Maps",
+    "mapTitle": "Peta lokasi bengkel Kinetic"
   }
 }

@@ -1,6 +1,5 @@
-import { placeholderPage } from "@/components/layout/placeholder-page";
+import { articleListPage } from "@/components/article/article-pages";
 
-// Placeholder until this page is built (PLAN.md phase 2+).
-const page = placeholderPage("blog");
+const page = articleListPage("blog");
 export const generateMetadata = page.generateMetadata;
 export default page.Page;

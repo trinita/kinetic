@@ -12,18 +12,18 @@ Website and company profile for **Kinetic**, a workshop that designs and builds 
 
 ## 2. Stack
 
-| Concern   | Choice                                                                                                                                                            |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Framework | Next.js 16 (App Router, Cache Components) + TypeScript                                                                                                            |
-| Styling   | Tailwind CSS                                                                                                                                                      |
-| Content   | MDX files in `content/` with typed frontmatter (validated with Zod)                                                                                               |
-| Images    | `next/image`, originals in `public/images/`                                                                                                                       |
-| AI chat   | Claude API (Anthropic SDK) via a streaming route handler                                                                                                          |
-| Search    | Build-time embeddings index + keyword fallback (MiniSearch)                                                                                                       |
-| Enquiries | WhatsApp click-to-chat (`wa.me`) links with a prefilled message (product, size, wood, name)                                                                       |
-| i18n      | Next.js built-in pattern: `app/[lang]` + JSON dictionaries (`lib/i18n/`), `proxy.ts` maps Indonesian URLs; Indonesian (`id`) default at `/`, English at `/en/...` |
-| Hosting   | Vercel                                                                                                                                                            |
-| Quality   | ESLint, Prettier, Vitest (unit), Playwright (smoke e2e)                                                                                                           |
+| Concern   | Choice                                                                                                                                                                        |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework | Next.js 16 (App Router, Cache Components) + TypeScript                                                                                                                        |
+| Styling   | Tailwind CSS                                                                                                                                                                  |
+| Content   | Markdown files in `content/` (`<slug>.id.md` + optional `<slug>.en.md`), YAML frontmatter validated with Zod; drafts and TODOs hidden in production (see `content/README.md`) |
+| Images    | `next/image`, originals in `public/images/`                                                                                                                                   |
+| AI chat   | Claude API (Anthropic SDK) via a streaming route handler                                                                                                                      |
+| Search    | Build-time embeddings index + keyword fallback (MiniSearch)                                                                                                                   |
+| Enquiries | WhatsApp click-to-chat (`wa.me`) links with a prefilled message (product, size, wood, name)                                                                                   |
+| i18n      | Next.js built-in pattern: `app/[lang]` + JSON dictionaries (`lib/i18n/`), `proxy.ts` maps Indonesian URLs; Indonesian (`id`) default at `/`, English at `/en/...`             |
+| Hosting   | Vercel                                                                                                                                                                        |
+| Quality   | ESLint, Prettier, Vitest (unit), Playwright (smoke e2e)                                                                                                                       |
 
 ## 3. Site map
 
@@ -46,14 +46,14 @@ Indonesian at the root, English under `/en` (e.g. `/produk/meja-jati` ↔ `/en/p
 
 ## 4. Content model (`content/`)
 
-- `products/*.mdx` — title, slug, category, woods[], finishes[], dimensions, priceFrom?, leadTimeWeeks, madeToOrder, images[], summary
-- `services/*.mdx` — title, summary, process steps, FAQ
-- `case-studies/*.mdx` — client, location, year, woods[], images[], body
-- `blog/*.mdx` — title, date, tags[], excerpt, body
-- `team/*.mdx` — name, role, photo, bio
-- `site/faq.mdx`, `site/company.json` — hours, address, contact, shipping/warranty policies
+- `products/` — title, status, featured, category, woods[], finishes[], dimensions, leadTimeWeeks, madeToOrder, priceFrom?, customizable[], images[{src, alt}], summary
+- `services/` — title, status, order, summary, image?
+- `case-studies/`, `blog/` — title, status, date, excerpt, cover, location?, related products[]
+- `team/` — name, status, role, order, photo
+- `pages/about` — the About page story
+- Company facts (address, hours, WhatsApp, Instagram) live in `lib/site.ts` and the dictionaries.
 
-Each entry has an Indonesian file and an English file (`meja-jati.id.mdx`, `meja-jati.en.mdx`); pages fall back to Indonesian if a translation is missing.
+Each entry is `<slug>.id.md` (Indonesian: facts + text, required) plus an optional `<slug>.en.md` (English text only). The file name is the URL slug in both languages; English falls back to Indonesian. Full guide: `content/README.md`.
 
 All of this is also the knowledge source for chat and search, so there is one source of truth.
 
@@ -107,7 +107,7 @@ tests/                unit + e2e
 | #    | Phase           | Deliverables                                                                                                                                                                                           |
 | ---- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1 ✅ | Foundation      | Next.js + TS + Tailwind scaffold, lint/format/test setup, design tokens, layout (header/footer/nav), i18n routing (id/en), placeholder pages, deploy preview on Vercel (pending: needs Vercel account) |
-| 2    | Content & pages | Content schemas + loaders, all pages with real structure and placeholder content, product filters, WhatsApp enquiry buttons                                                                            |
+| 2 ✅ | Content & pages | Content schemas + loaders, all pages with real structure and placeholder content, product filters, WhatsApp enquiry buttons                                                                            |
 | 3    | Smart search    | Index build script, `/api/search`, ⌘K dialog, `/search` page, keyword fallback                                                                                                                         |
 | 4    | Chat assistant  | `/api/chat` streaming, retrieval grounding, tools, widget UI, rate limiting, enquiry hand-off                                                                                                          |
 | 5    | Polish & launch | Real photos/copy, SEO (metadata, sitemap, OG images, JSON-LD for products/organization), performance pass (Lighthouse ≥ 90), accessibility audit, analytics, domain                                    |
@@ -131,5 +131,5 @@ NEXT_PUBLIC_WHATSAPP_NUMBER=6281399325549   # wa.me format: no +, spaces or dash
 
 ## 11. Open questions
 
-- Product details for the 2 drafts (`content/products/*.mdx`, every `TODO`) and more products/photos.
+- Product details for the 2 drafts (`content/products/*.md`, every `TODO`), service and About texts (drafts in `content/`) and more products/photos.
 - Who writes the copy and the English translations?

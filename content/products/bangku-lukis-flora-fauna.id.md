@@ -1,10 +1,10 @@
 ---
 title: Bangku Lukis Flora & Fauna # TODO cek nama
-slug: bangku-lukis-flora-fauna
 status: draft
+featured: true
 category: bangku
 woods: [TODO]
-finishes: [TODO cat akrilik?, TODO]
+finishes: [TODO cat akrilik?]
 dimensions: TODO # contoh: 180 × 50 × 85 cm
 leadTimeWeeks: TODO
 madeToOrder: TODO
@@ -18,14 +18,9 @@ images:
 summary: Bangku panjang yang dilukis tangan dari sandaran hingga dudukan dengan burung, bunga, dan dedaunan berwarna cerah.
 ---
 
-Bangku panjang yang seluruh permukaannya dilukis tangan: burung, bunga, buah, dan dedaunan di atas latar hijau dan merah. TODO tambahkan cerita/detail lain.
+Bangku panjang yang seluruh permukaannya dilukis tangan: burung, bunga, buah, dan dedaunan di atas latar hijau dan merah.
 
-## Detail
-
-- Kayu: TODO
-- Finishing: TODO
-- Ukuran: TODO
-- Waktu pengerjaan: TODO minggu
+TODO tambahkan cerita atau detail lain.
 
 ## Perawatan
 

@@ -26,7 +26,33 @@
     "lead": "Tables, chairs, shelves and other wood pieces made in our own workshop — from choosing the timber to the final finish. Tell us what you need and we'll build it.",
     "ctaProducts": "See products",
     "ctaWhatsapp": "Order on WhatsApp",
-    "whatsappMessage": "Hello Kinetic, I'd like to ask about your wood products."
+    "whatsappMessage": "Hello Kinetic, I'd like to ask about your wood products.",
+    "featuredTitle": "Selected work",
+    "featuredIntro": "A few pieces fresh out of our workshop.",
+    "seeAll": "See all products",
+    "processTitle": "How to order",
+    "processIntro": "Everything is made to order. Here's how it works:",
+    "steps": [
+      {
+        "title": "Tell us what you need",
+        "body": "Message us on WhatsApp: size, purpose, colours or example photos."
+      },
+      {
+        "title": "Design & quote",
+        "body": "We help refine the design and give you a price and lead time."
+      },
+      {
+        "title": "Made in the workshop",
+        "body": "The timber is chosen, carved, painted and finished by hand in our Bekasi workshop."
+      },
+      {
+        "title": "Pick up or delivery",
+        "body": "Collect your piece at the workshop, or we'll help arrange delivery."
+      }
+    ],
+    "ctaTitle": "Have your own furniture idea?",
+    "ctaBody": "Tell us about it. We'd love to help make it real.",
+    "ctaButton": "Chat on WhatsApp"
   },
   "placeholder": {
     "comingSoon": "We're still preparing this page.",
@@ -44,5 +70,99 @@
     "title": "Page not found",
     "body": "Sorry, the page you're looking for doesn't exist or has moved.",
     "back": "Back to home"
+  },
+  "common": {
+    "draft": "Draft",
+    "notTranslated": "This page isn't available in English yet, so it's shown in Indonesian.",
+    "whatsapp": "Ask on WhatsApp",
+    "seeInstagram": "See our latest work on Instagram",
+    "back": "Back"
+  },
+  "products": {
+    "intro": "Handmade furniture and wood pieces. Ask us anything on WhatsApp — including custom sizes and patterns.",
+    "filterLabel": "Filter by category",
+    "all": "All",
+    "madeToOrder": "Made to order",
+    "oneOff": "One-off piece",
+    "empty": "We're still preparing the catalog. Meanwhile, see our latest work on Instagram or ask us on WhatsApp.",
+    "details": "Details",
+    "wood": "Wood",
+    "finish": "Finish",
+    "size": "Size",
+    "leadTime": "Lead time",
+    "weeks": "{n} weeks",
+    "price": "Price",
+    "priceFrom": "From {price}",
+    "priceAsk": "Ask for a price on WhatsApp",
+    "customizable": "Can be customised",
+    "availability": "Availability",
+    "enquire": "Order on WhatsApp",
+    "enquireMessage": "Hello Kinetic, I'm interested in {title}: {url}",
+    "allProducts": "All products"
+  },
+  "categories": {
+    "meja": "Tables",
+    "kursi": "Chairs",
+    "bangku": "Benches",
+    "rak": "Shelves",
+    "lemari": "Cabinets",
+    "dekorasi": "Decor",
+    "lainnya": "Other"
+  },
+  "services": {
+    "intro": "Beyond the catalog, we take on work made to your needs.",
+    "empty": "We're still preparing our list of services. Ask us about your project on WhatsApp.",
+    "ask": "Ask about this service",
+    "askMessage": "Hello Kinetic, I'd like to ask about your {title} service."
+  },
+  "articles": {
+    "blogIntro": "Wood care tips, stories from the workshop and the process behind our work.",
+    "caseIntro": "Work we've made for homes, cafés and other spaces.",
+    "empty": "Nothing here yet. Follow our latest news on Instagram.",
+    "readMore": "Read more",
+    "all": "All articles",
+    "allProjects": "All projects",
+    "location": "Location",
+    "relatedProducts": "Related products"
+  },
+  "about": {
+    "lead": "Kinetic is a wood workshop in Jatiasih, Bekasi — the workshop behind Wood Knots. We make furniture and wood pieces by hand, from choosing the timber to the final finish.",
+    "valuesTitle": "What we stand for",
+    "values": [
+      {
+        "title": "Made by hand",
+        "body": "Every piece is carved, painted and finished by hand."
+      },
+      {
+        "title": "Made to order",
+        "body": "Sizes, colours and patterns can be adapted to your space."
+      },
+      {
+        "title": "From our own workshop",
+        "body": "Made in our workshop in Bekasi, which you're welcome to visit."
+      }
+    ],
+    "visitTitle": "Visit the workshop",
+    "teamLink": "Meet the team"
+  },
+  "team": {
+    "intro": "The people behind every piece.",
+    "empty": "Team profiles coming soon."
+  },
+  "contact": {
+    "intro": "The fastest way to reach us is WhatsApp. You're also welcome to visit the workshop.",
+    "formTitle": "Send a question",
+    "name": "Name",
+    "interest": "What you'd like to ask about",
+    "interestPlaceholder": "e.g. teak dining table for 6",
+    "message": "Message",
+    "messagePlaceholder": "Size, colours, when you need it, or any other question",
+    "send": "Continue to WhatsApp",
+    "note": "This button opens WhatsApp with your message filled in. We don't store anything from this form.",
+    "template": "Hello Kinetic, I'm {name}.\nI'd like to ask about: {interest}\n\n{message}",
+    "addressTitle": "Workshop address",
+    "hoursTitle": "Opening hours",
+    "directions": "Directions on Google Maps",
+    "mapTitle": "Map showing the Kinetic workshop"
   }
 }

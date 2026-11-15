@@ -1,5 +1,7 @@
 export const site = {
   name: "Kinetic",
+  /** Public address of the site, used in absolute links (e.g. WhatsApp messages). */
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://kinetic.co").replace(/\/$/, ""),
   /** WhatsApp number in wa.me format: country code, no "+", spaces or dashes. */
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281399325549",
   /** Shown in the footer as "+62 813-9932-5549". */

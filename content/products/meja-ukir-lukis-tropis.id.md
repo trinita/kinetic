@@ -1,13 +1,13 @@
 ---
 title: Meja Ukir Lukis Tropis # TODO cek nama
-slug: meja-ukir-lukis-tropis
 status: draft
+featured: true
 category: meja
 woods: [TODO]
-finishes: [TODO cat akrilik?, TODO]
+finishes: [TODO cat akrilik?]
 dimensions: TODO # contoh: Ø 60 × 55 cm
 leadTimeWeeks: TODO
-madeToOrder: TODO # true jika bisa dipesan lagi, false jika hanya satu
+madeToOrder: TODO
 priceFrom:
 customizable: [TODO ukuran?, TODO warna?, TODO motif?]
 images:
@@ -20,14 +20,9 @@ images:
 summary: Meja samping bundar dengan bingkai berukir motif belah ketupat dan daun meja yang dilukis tangan dengan daun tropis, bunga, dan kupu-kupu.
 ---
 
-Meja samping bundar dengan bingkai kayu gelap yang diukir motif belah ketupat di sekelilingnya. Daun mejanya dilukis tangan dengan daun-daun tropis, pakis, bunga, dan kupu-kupu dalam warna hijau, merah muda, dan jingga yang cerah. Kakinya bersilang dan kokoh. TODO tambahkan cerita/detail lain.
+Meja samping bundar dengan bingkai kayu gelap yang diukir motif belah ketupat di sekelilingnya. Daun mejanya dilukis tangan dengan daun-daun tropis, pakis, bunga, dan kupu-kupu dalam warna hijau, merah muda, dan jingga yang cerah. Kakinya bersilang dan kokoh.
 
-## Detail
-
-- Kayu: TODO
-- Finishing: TODO
-- Ukuran: TODO
-- Waktu pengerjaan: TODO minggu
+TODO tambahkan cerita atau detail lain.
 
 ## Perawatan
 
