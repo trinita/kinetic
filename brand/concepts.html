@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kinetic Brand Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --walnut: #3E2B20;
+    --jati: #B07A45;
+    --oak: #D9B98C;
+    --krem: #F6F0E6;
+    --lumut: #5E6B4A;
+    --arang: #1E1A17;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--krem); color: var(--arang); font-family: "Plus Jakarta Sans", system-ui, sans-serif; }
+  main { max-width: 1080px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 40px; margin: 0 0 4px; }
+  h2 { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 26px; margin: 56px 0 16px; }
+  p.lead { margin: 0 0 32px; color: #5b4c40; }
+  .concept { border: 1px solid #e2d6c4; border-radius: 16px; overflow: hidden; margin-bottom: 28px; background: #fffaf2; }
+  .concept header { padding: 18px 22px; border-bottom: 1px solid #e2d6c4; }
+  .concept header b { font-family: Fraunces, serif; font-size: 20px; }
+  .concept header span { display: block; color: #6b5a4c; font-size: 14px; margin-top: 4px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 2fr; }
+  .tile { display: flex; align-items: center; justify-content: center; padding: 28px; min-height: 200px; }
+  .tile.light { background: var(--krem); }
+  .tile.dark { background: var(--walnut); }
+  .tile.lock { background: #fffaf2; }
+  .mark { width: 140px; height: 140px; }
+  .lockup { display: flex; align-items: center; gap: 18px; }
+  .lockup svg { width: 76px; height: 76px; flex: none; }
+  .wm { line-height: 1; }
+  .wm .name { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 46px; color: var(--walnut); letter-spacing: -0.5px; }
+  .wm .tag { font-size: 12px; font-weight: 700; letter-spacing: 4px; color: var(--jati); margin-top: 8px; }
+  .wm2 { font-family: Fraunces, Georgia, serif; font-weight: 600; color: var(--walnut); letter-spacing: -1px; line-height: 1; font-size: 84px; }
+  .wm2 .i { position: relative; }
+  .wm2 .i::after { content: ""; position: absolute; left: 50%; top: 0.2em; width: 0.15em; height: 0.15em; border-radius: 50%; background: var(--jati); transform: translateX(-50%); }
+  .wm2-wrap { text-align: center; }
+  .wm2-wrap .tag { font-size: 14px; font-weight: 700; letter-spacing: 6px; color: var(--jati); margin-top: 10px; }
+  .dark .wm2 { color: var(--krem); }
+  .dark .wm2 .i::after { background: var(--oak); }
+  .dark .tag { color: var(--oak) !important; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 760px) { .row2 { grid-template-columns: 1fr; } .wm2 { font-size: 64px; } }
+  .swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .sw { border-radius: 12px; overflow: hidden; border: 1px solid #e2d6c4; }
+  .sw div { height: 84px; }
+  .sw p { margin: 0; padding: 8px 10px; font-size: 13px; background: #fffaf2; }
+  .sw p b { display: block; }
+  .type { border: 1px solid #e2d6c4; border-radius: 16px; padding: 24px; background: #fffaf2; }
+  .type .d { font-family: Fraunces, serif; font-weight: 600; font-size: 38px; margin: 0 0 6px; color: var(--walnut); }
+  .type .b { font-size: 17px; line-height: 1.6; margin: 0 0 18px; max-width: 640px; }
+  .type small { color: #6b5a4c; }
+  @media (max-width: 760px) {
+    .row { grid-template-columns: 1fr 1fr; }
+    .tile.lock { grid-column: 1 / -1; }
+    .swatches { grid-template-columns: repeat(3, 1fr); }
+    .wm .name { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- Concept A: Lingkar Tahun (growth rings) -->
+    <symbol id="mark-a" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="56" fill="var(--a-bg)"/>
+      <g fill="none" stroke="var(--a-ring)" stroke-width="2">
+        <ellipse cx="57" cy="63" rx="46" ry="44"/>
+        <ellipse cx="56" cy="64" rx="35" ry="32"/>
+        <ellipse cx="55" cy="65" rx="23" ry="21"/>
+        <ellipse cx="54" cy="66" rx="11" ry="10"/>
+      </g>
+      <path d="M44 32 V88 M44 63 L76 32 M56 52 L79 88" fill="none" stroke="var(--a-k)" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter"/>
+    </symbol>
+
+    <!-- Concept B: Sambungan (joinery K) -->
+    <clipPath id="b-clip"><rect x="0" y="16" width="120" height="88"/></clipPath>
+    <symbol id="mark-b" viewBox="0 0 120 120">
+      <g clip-path="url(#b-clip)">
+        <line x1="60" y1="58" x2="104" y2="116" stroke="var(--b-arm2)" stroke-width="17"/>
+        <line x1="50" y1="68" x2="102" y2="8" stroke="var(--b-gap)" stroke-width="23" />
+        <line x1="50" y1="68" x2="102" y2="8" stroke="var(--b-arm1)" stroke-width="17"/>
+      </g>
+      <rect x="24" y="14" width="26" height="92" fill="var(--b-gap)"/>
+      <rect x="27" y="16" width="20" height="88" rx="1.5" fill="var(--b-plank)"/>
+      <g fill="none" stroke="var(--b-grain)" stroke-width="1.3" stroke-linecap="round">
+        <path d="M32 20 C31 40 34 52 32 70 S33 92 32 100"/>
+        <path d="M37 20 C38 34 35 48 37 62 C39 76 36 88 37 100"/>
+        <path d="M42 20 C41 30 43 44 42 56 C41 70 43 86 42 100"/>
+      </g>
+    </symbol>
+
+    <!-- Concept C: Cap Bakar (branding-iron stamp) -->
+    <path id="c-top" d="M20 60 A40 40 0 0 1 100 60"/>
+    <path id="c-bot" d="M14 60 A46 46 0 0 0 106 60"/>
+    <symbol id="mark-c" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="56" fill="none" stroke="var(--c-ink)" stroke-width="3"/>
+      <circle cx="60" cy="60" r="31" fill="none" stroke="var(--c-ink)" stroke-width="1.5"/>
+      <text font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="10" letter-spacing="3.2" fill="var(--c-ink)">
+        <textPath href="#c-top" startOffset="50%" text-anchor="middle">KINETIC</textPath>
+      </text>
+      <text font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="8" letter-spacing="2.4" fill="var(--c-ink)">
+        <textPath href="#c-bot" startOffset="50%" text-anchor="middle">BENGKEL KAYU</textPath>
+      </text>
+      <circle cx="17" cy="60" r="2" fill="var(--c-ink)"/>
+      <circle cx="103" cy="60" r="2" fill="var(--c-ink)"/>
+      <path d="M50 44 V76 M50 62 L68 44 M56 56 L70 76" fill="none" stroke="var(--c-ink)" stroke-width="6" stroke-linecap="square"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+  <h1>Kinetic — konsep logo</h1>
+  <p class="lead">Four directions for a wood workshop. Each is shown on light and dark backgrounds, plus a horizontal lockup with the wordmark.</p>
+
+  <section class="concept">
+    <header><b>A · Lingkar Tahun</b><span>Tree growth rings seen in a cut log, with a bold K on top. Warm, organic, easy to recognise as a small icon.</span></header>
+    <div class="row">
+      <div class="tile light"><svg class="mark" style="--a-bg:var(--walnut);--a-ring:var(--jati);--a-k:var(--krem)"><use href="#mark-a"/></svg></div>
+      <div class="tile dark"><svg class="mark" style="--a-bg:var(--oak);--a-ring:var(--jati);--a-k:var(--walnut)"><use href="#mark-a"/></svg></div>
+      <div class="tile lock"><div class="lockup"><svg style="--a-bg:var(--walnut);--a-ring:var(--jati);--a-k:var(--krem)"><use href="#mark-a"/></svg><div class="wm"><div class="name">kinetic</div><div class="tag">BENGKEL KAYU</div></div></div></div>
+    </div>
+  </section>
+
+  <section class="concept">
+    <header><b>B · Sambungan</b><span>A K built from three separate pieces of timber, like a joint, with wood grain on the upright. Speaks to craft and to "kinetic" movement.</span></header>
+    <div class="row">
+      <div class="tile light"><svg class="mark" style="--b-plank:var(--walnut);--b-grain:var(--jati);--b-arm1:var(--jati);--b-arm2:var(--lumut);--b-gap:var(--krem)"><use href="#mark-b"/></svg></div>
+      <div class="tile dark"><svg class="mark" style="--b-plank:var(--oak);--b-grain:var(--jati);--b-arm1:var(--jati);--b-arm2:var(--krem);--b-gap:var(--walnut)"><use href="#mark-b"/></svg></div>
+      <div class="tile lock"><div class="lockup"><svg style="--b-plank:var(--walnut);--b-grain:var(--jati);--b-arm1:var(--jati);--b-arm2:var(--lumut);--b-gap:#fffaf2"><use href="#mark-b"/></svg><div class="wm"><div class="name">kinetic</div><div class="tag">BENGKEL KAYU</div></div></div></div>
+    </div>
+  </section>
+
+  <section class="concept">
+    <header><b>C · Cap Bakar</b><span>A branding-iron stamp, the kind burned into finished furniture. Single colour, works as a real stamp on products and packaging.</span></header>
+    <div class="row">
+      <div class="tile light"><svg class="mark" style="--c-ink:var(--walnut)"><use href="#mark-c"/></svg></div>
+      <div class="tile dark"><svg class="mark" style="--c-ink:var(--oak)"><use href="#mark-c"/></svg></div>
+      <div class="tile lock"><div class="lockup"><svg style="--c-ink:var(--walnut)"><use href="#mark-c"/></svg><div class="wm"><div class="name">kinetic</div><div class="tag">BENGKEL KAYU</div></div></div></div>
+    </div>
+  </section>
+
+  <section class="concept">
+    <header><b>D · Wordmark</b><span>Just the lowercase name, with the dots on the i's in teak colour, like drops of wood finish. Pair it with any of the icons above for small spaces.</span></header>
+    <div class="row2">
+      <div class="tile light"><div class="wm2-wrap"><div class="wm2">k<span class="i">ı</span>net<span class="i">ı</span>c</div><div class="tag">BENGKEL KAYU</div></div></div>
+      <div class="tile dark"><div class="wm2-wrap"><div class="wm2">k<span class="i">ı</span>net<span class="i">ı</span>c</div><div class="tag">BENGKEL KAYU</div></div></div>
+    </div>
+  </section>
+
+  <h2>Palet warna</h2>
+  <div class="swatches">
+    <div class="sw"><div style="background:#3E2B20"></div><p><b>Walnut</b>#3E2B20</p></div>
+    <div class="sw"><div style="background:#B07A45"></div><p><b>Jati</b>#B07A45</p></div>
+    <div class="sw"><div style="background:#D9B98C"></div><p><b>Oak</b>#D9B98C</p></div>
+    <div class="sw"><div style="background:#F6F0E6"></div><p><b>Krem</b>#F6F0E6</p></div>
+    <div class="sw"><div style="background:#5E6B4A"></div><p><b>Lumut</b>#5E6B4A</p></div>
+    <div class="sw"><div style="background:#1E1A17"></div><p><b>Arang</b>#1E1A17</p></div>
+  </div>
+
+  <h2>Tipografi</h2>
+  <div class="type">
+    <p class="d">Dibuat dengan tangan, untuk dipakai seumur hidup.</p>
+    <p class="b">Setiap meja, kursi, dan rak kami kerjakan di bengkel sendiri, dari kayu pilihan hingga finishing terakhir. Handmade in our own workshop, from the first cut to the final finish.</p>
+    <small>Headings: <b>Fraunces</b> (serif, Google Fonts) · Body: <b>Plus Jakarta Sans</b> (sans, designed in Jakarta, Google Fonts)</small>
+  </div>
+</main>
+</body>
+</html>
