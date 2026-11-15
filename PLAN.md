@@ -12,18 +12,18 @@ Website and company profile for **Kinetic**, a workshop that designs and builds 
 
 ## 2. Stack
 
-| Concern | Choice |
-|---|---|
-| Framework | Next.js (App Router) + TypeScript |
-| Styling | Tailwind CSS |
-| Content | MDX files in `content/` with typed frontmatter (validated with Zod) |
-| Images | `next/image`, originals in `public/images/` |
-| AI chat | Claude API (Anthropic SDK) via a streaming route handler |
-| Search | Build-time embeddings index + keyword fallback (MiniSearch) |
-| Enquiries | WhatsApp click-to-chat (`wa.me`) links with a prefilled message (product, size, wood, name) |
-| i18n | `next-intl`; Indonesian (`id`) default at `/`, English at `/en/...` |
-| Hosting | Vercel |
-| Quality | ESLint, Prettier, Vitest (unit), Playwright (smoke e2e) |
+| Concern   | Choice                                                                                                                                                            |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework | Next.js 16 (App Router, Cache Components) + TypeScript                                                                                                            |
+| Styling   | Tailwind CSS                                                                                                                                                      |
+| Content   | MDX files in `content/` with typed frontmatter (validated with Zod)                                                                                               |
+| Images    | `next/image`, originals in `public/images/`                                                                                                                       |
+| AI chat   | Claude API (Anthropic SDK) via a streaming route handler                                                                                                          |
+| Search    | Build-time embeddings index + keyword fallback (MiniSearch)                                                                                                       |
+| Enquiries | WhatsApp click-to-chat (`wa.me`) links with a prefilled message (product, size, wood, name)                                                                       |
+| i18n      | Next.js built-in pattern: `app/[lang]` + JSON dictionaries (`lib/i18n/`), `proxy.ts` maps Indonesian URLs; Indonesian (`id`) default at `/`, English at `/en/...` |
+| Hosting   | Vercel                                                                                                                                                            |
+| Quality   | ESLint, Prettier, Vitest (unit), Playwright (smoke e2e)                                                                                                           |
 
 ## 3. Site map
 
@@ -60,6 +60,7 @@ All of this is also the knowledge source for chat and search, so there is one so
 ## 5. AI features
 
 ### 5.1 Smart search
+
 1. **Build step** (`scripts/build-index.ts`, runs before `next build`): chunk every content file (~300–500 tokens per chunk, keep title/URL/type metadata), compute embeddings, write `data/search-index.json`.
 2. **Query** (`/api/search`): embed the query, cosine-rank chunks, merge with MiniSearch keyword hits, group by page, return top results with snippets.
 3. **UI**: header search box (⌘K dialog) with instant results grouped by Products / Articles / Services; `/search` page for full results.
@@ -68,6 +69,7 @@ All of this is also the knowledge source for chat and search, so there is one so
 Content volume is small (tens–hundreds of pages), so an in-memory JSON index is enough; move to a vector DB (e.g. Postgres + pgvector) only if it grows.
 
 ### 5.2 Chat assistant
+
 - Floating "Ask the workshop" widget on every page, plus an "Ask about this piece" entry point on product pages (pre-seeds context).
 - `/api/chat` route handler streams responses from Claude (default `claude-sonnet-5-5`; consider `claude-haiku-5-5` if cost matters).
 - **Grounding**: each turn retrieves top chunks from the same search index and puts them in the prompt; system prompt tells the assistant to answer only from Kinetic's content and say when it doesn't know.
@@ -102,13 +104,13 @@ tests/                unit + e2e
 
 ## 8. Phases
 
-| # | Phase | Deliverables |
-|---|---|---|
-| 1 | Foundation | Next.js + TS + Tailwind scaffold, lint/format/test setup, design tokens, layout (header/footer/nav), deploy preview on Vercel |
-| 2 | Content & pages | Content schemas + loaders, i18n routing (id/en), all pages with placeholder content, product filters, WhatsApp enquiry buttons |
-| 3 | Smart search | Index build script, `/api/search`, ⌘K dialog, `/search` page, keyword fallback |
-| 4 | Chat assistant | `/api/chat` streaming, retrieval grounding, tools, widget UI, rate limiting, enquiry hand-off |
-| 5 | Polish & launch | Real photos/copy, SEO (metadata, sitemap, OG images, JSON-LD for products/organization), performance pass (Lighthouse ≥ 90), accessibility audit, analytics, domain |
+| #    | Phase           | Deliverables                                                                                                                                                                                           |
+| ---- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1 ✅ | Foundation      | Next.js + TS + Tailwind scaffold, lint/format/test setup, design tokens, layout (header/footer/nav), i18n routing (id/en), placeholder pages, deploy preview on Vercel (pending: needs Vercel account) |
+| 2    | Content & pages | Content schemas + loaders, all pages with real structure and placeholder content, product filters, WhatsApp enquiry buttons                                                                            |
+| 3    | Smart search    | Index build script, `/api/search`, ⌘K dialog, `/search` page, keyword fallback                                                                                                                         |
+| 4    | Chat assistant  | `/api/chat` streaming, retrieval grounding, tools, widget UI, rate limiting, enquiry hand-off                                                                                                          |
+| 5    | Polish & launch | Real photos/copy, SEO (metadata, sitemap, OG images, JSON-LD for products/organization), performance pass (Lighthouse ≥ 90), accessibility audit, analytics, domain                                    |
 
 ## 9. Environment variables
 

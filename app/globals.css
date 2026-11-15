@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* Brand palette (see brand/concepts.html) */
+@theme {
+  --color-walnut: #3e2b20;
+  --color-jati: #b07a45;
+  --color-oak: #d9b98c;
+  --color-krem: #f6f0e6;
+  --color-lumut: #5e6b4a;
+  --color-arang: #1e1a17;
+}
+
+/* Semantic tokens: use these in components so dark mode works automatically. */
+:root {
+  --bg: #f6f0e6;
+  --surface: #fffaf2;
+  --fg: #2a1f18;
+  --muted: #6b5a4c;
+  --border: #e2d6c4;
+  --accent: #b07a45;
+  --accent-strong: #3e2b20;
+  --on-accent-strong: #f6f0e6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1a17;
+    --surface: #2a231e;
+    --fg: #f1e8da;
+    --muted: #bfae98;
+    --border: #3d3229;
+    --accent: #d9b98c;
+    --accent-strong: #d9b98c;
+    --on-accent-strong: #1e1a17;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-on-accent-strong: var(--on-accent-strong);
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

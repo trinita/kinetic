@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Kinetic — Wood Workshop",
+    "description": "Kinetic is a wood workshop making handmade, made-to-order furniture and wood products."
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "services": "Services",
+    "caseStudies": "Projects",
+    "about": "About",
+    "team": "Team",
+    "blog": "Blog",
+    "contact": "Contact",
+    "search": "Search"
+  },
+  "header": {
+    "mainNav": "Main navigation",
+    "menu": "Menu",
+    "whatsapp": "Ask on WhatsApp",
+    "switchLanguage": "Change language"
+  },
+  "home": {
+    "eyebrow": "Wood workshop",
+    "title": "Made by hand, built to last a lifetime.",
+    "lead": "Tables, chairs, shelves and other wood pieces made in our own workshop — from choosing the timber to the final finish. Tell us what you need and we'll build it.",
+    "ctaProducts": "See products",
+    "ctaWhatsapp": "Order on WhatsApp",
+    "whatsappMessage": "Hello Kinetic, I'd like to ask about your wood products."
+  },
+  "placeholder": {
+    "comingSoon": "We're still preparing this page.",
+    "back": "Back to home"
+  },
+  "footer": {
+    "tagline": "Handmade furniture and wood products, made to order.",
+    "explore": "Explore",
+    "contact": "Get in touch",
+    "addressPending": "Workshop address coming soon",
+    "hoursPending": "Opening hours coming soon",
+    "rights": "All rights reserved."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "Sorry, the page you're looking for doesn't exist or has moved.",
+    "back": "Back to home"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Kinetic — Bengkel Kayu",
+    "description": "Kinetic adalah bengkel kayu yang membuat furnitur dan produk kayu buatan tangan, sesuai pesanan."
+  },
+  "nav": {
+    "home": "Beranda",
+    "products": "Produk",
+    "services": "Layanan",
+    "caseStudies": "Proyek",
+    "about": "Tentang",
+    "team": "Tim",
+    "blog": "Blog",
+    "contact": "Kontak",
+    "search": "Cari"
+  },
+  "header": {
+    "mainNav": "Navigasi utama",
+    "menu": "Menu",
+    "whatsapp": "Tanya via WhatsApp",
+    "switchLanguage": "Ganti bahasa"
+  },
+  "home": {
+    "eyebrow": "Bengkel kayu",
+    "title": "Dibuat dengan tangan, untuk dipakai seumur hidup.",
+    "lead": "Meja, kursi, rak, dan produk kayu lainnya yang kami kerjakan di bengkel sendiri — dari memilih kayu hingga finishing terakhir. Ceritakan kebutuhan Anda, kami buatkan.",
+    "ctaProducts": "Lihat produk",
+    "ctaWhatsapp": "Pesan via WhatsApp",
+    "whatsappMessage": "Halo Kinetic, saya ingin bertanya tentang produk kayu Anda."
+  },
+  "placeholder": {
+    "comingSoon": "Halaman ini sedang kami siapkan.",
+    "back": "Kembali ke beranda"
+  },
+  "footer": {
+    "tagline": "Furnitur dan produk kayu buatan tangan, dikerjakan sesuai pesanan.",
+    "explore": "Jelajahi",
+    "contact": "Hubungi kami",
+    "addressPending": "Alamat bengkel segera hadir",
+    "hoursPending": "Jam buka segera hadir",
+    "rights": "Hak cipta dilindungi."
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "body": "Maaf, halaman yang Anda cari tidak ada atau sudah dipindahkan.",
+    "back": "Kembali ke beranda"
+  }
+}
