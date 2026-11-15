@@ -81,7 +81,7 @@ export default async function Home() {
       </section>
 
       {/* How to order */}
-      <section className="bg-surface border-border border-y">
+      <section id="order" className="bg-surface border-border scroll-mt-20 border-y">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <h2 className="font-display text-accent-strong text-3xl font-semibold sm:text-4xl">
             {t.processTitle}

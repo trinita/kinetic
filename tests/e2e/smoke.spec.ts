@@ -73,3 +73,32 @@ test("about and contact pages show the workshop address and hours", async ({ pag
   await expect(page.getByText("Jl. Wibawa Mukti II No.39").first()).toBeVisible();
   await expect(page.getByText("Minggu–Jumat, 09.00–17.00 WIB").first()).toBeVisible();
 });
+
+test("search page finds workshop info without JavaScript-dependent UI", async ({ page }) => {
+  await page.goto("/cari?q=jam+buka");
+  await expect(page.getByText("hasil untuk “jam buka”")).toBeVisible();
+  await expect(page.getByRole("link", { name: /Kontak/ }).last()).toHaveAttribute("href", "/kontak");
+  await page.goto("/en/search?q=opening+hours");
+  await expect(page.getByRole("link", { name: /Contact/ }).last()).toHaveAttribute("href", "/en/contact");
+  await page.goto("/cari?q=xyzzy");
+  await expect(page.getByText("Tidak ada hasil untuk “xyzzy”")).toBeVisible();
+});
+
+test("search dialog opens from the header and navigates to a result", async ({ page, isMobile }) => {
+  await page.goto("/");
+  if (isMobile) await page.getByRole("link", { name: "Cari di situs" }).click();
+  else await page.keyboard.press("ControlOrMeta+k");
+  const input = page.getByRole("combobox", { name: "Cari di situs" });
+  await expect(input).toBeFocused();
+  await input.fill("cara memesan");
+  await expect(page.getByRole("option").first()).toContainText("Cara memesan");
+  await input.press("Enter");
+  await expect(page).toHaveURL(/\/#order$/);
+});
+
+test("search API returns results for the requested language", async ({ request }) => {
+  const res = await request.get("/api/search?q=wood%20knots&lang=en");
+  expect(res.ok()).toBe(true);
+  const body = await res.json();
+  expect(body.results[0]).toMatchObject({ type: "page", url: "/en/about" });
+});

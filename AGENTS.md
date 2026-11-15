@@ -29,6 +29,7 @@ Next.js 16 (App Router, Cache Components) + TypeScript + Tailwind CSS v4. Conten
 - Colours: use semantic Tailwind tokens (`bg-bg`, `text-fg`, `text-muted`, `bg-surface`, `border-border`, `text-accent`, `bg-accent-strong`) so dark mode works; brand colours (`walnut`, `jati`, `oak`, `krem`, `lumut`, `arang`) are for fixed-colour areas like the footer.
 - WhatsApp links: `whatsappLink(message)` from `lib/site.ts`.
 - Content lives in `content/` (see `content/README.md`) and is read only through `lib/content` (`getProducts`, `getArticles`, …). Indonesian files hold the facts; English files hold translated text only. `TODO` values count as missing; drafts show in dev and are hidden in production; a published entry with TODOs fails the build on purpose.
+- Search (`lib/search`): `core.ts` is pure and unit-tested; `documents.ts` turns content + dictionaries into searchable docs (add new content types there); keyword search always works, embeddings only when `EMBEDDINGS_API_KEY` is set. `npm run search:index` runs before every build and never fails it.
 - Detail pages (`[slug]`) list their params with `slugParams()` (Cache Components needs at least one) and set `export const instant = false`.
 
 ## Commands

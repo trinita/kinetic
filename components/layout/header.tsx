@@ -6,6 +6,7 @@ import { Logo } from "@/components/ui/logo";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { NavLinks } from "./nav-links";
 import { LanguageSwitcher } from "./language-switcher";
+import { SearchDialog } from "@/components/search/search-dialog";
 import { mainNav } from "./nav-items";
 
 export async function Header() {
@@ -25,6 +26,21 @@ export async function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-3">
+          <SearchDialog
+            locale={locale}
+            searchPage={href(locale, "search")}
+            labels={{
+              label: dict.search.label,
+              placeholder: dict.search.placeholder,
+              open: dict.search.open,
+              close: dict.search.close,
+              loading: dict.search.loading,
+              empty: dict.search.empty,
+              hint: dict.search.hint,
+              seeAll: dict.search.seeAll,
+              types: dict.search.types,
+            }}
+          />
           <LanguageSwitcher locale={locale} label={dict.header.switchLanguage} />
           <a
             href={wa}

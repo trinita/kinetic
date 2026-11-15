@@ -19,7 +19,7 @@ Website and company profile for **Kinetic**, a workshop that designs and builds 
 | Content   | Markdown files in `content/` (`<slug>.id.md` + optional `<slug>.en.md`), YAML frontmatter validated with Zod; drafts and TODOs hidden in production (see `content/README.md`) |
 | Images    | `next/image`, originals in `public/images/`                                                                                                                                   |
 | AI chat   | Claude API (Anthropic SDK) via a streaming route handler                                                                                                                      |
-| Search    | Build-time embeddings index + keyword fallback (MiniSearch)                                                                                                                   |
+| Search    | MiniSearch keyword search (always on) + optional Voyage AI embeddings (`npm run search:index` → `data/search-vectors.json`), merged with reciprocal rank fusion               |
 | Enquiries | WhatsApp click-to-chat (`wa.me`) links with a prefilled message (product, size, wood, name)                                                                                   |
 | i18n      | Next.js built-in pattern: `app/[lang]` + JSON dictionaries (`lib/i18n/`), `proxy.ts` maps Indonesian URLs; Indonesian (`id`) default at `/`, English at `/en/...`             |
 | Hosting   | Vercel                                                                                                                                                                        |
@@ -108,7 +108,7 @@ tests/                unit + e2e
 | ---- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1 ✅ | Foundation      | Next.js + TS + Tailwind scaffold, lint/format/test setup, design tokens, layout (header/footer/nav), i18n routing (id/en), placeholder pages, deploy preview on Vercel (pending: needs Vercel account) |
 | 2 ✅ | Content & pages | Content schemas + loaders, all pages with real structure and placeholder content, product filters, WhatsApp enquiry buttons                                                                            |
-| 3    | Smart search    | Index build script, `/api/search`, ⌘K dialog, `/search` page, keyword fallback                                                                                                                         |
+| 3 ✅ | Smart search    | Index build script, `/api/search`, ⌘K dialog, `/search` page, keyword fallback                                                                                                                         |
 | 4    | Chat assistant  | `/api/chat` streaming, retrieval grounding, tools, widget UI, rate limiting, enquiry hand-off                                                                                                          |
 | 5    | Polish & launch | Real photos/copy, SEO (metadata, sitemap, OG images, JSON-LD for products/organization), performance pass (Lighthouse ≥ 90), accessibility audit, analytics, domain                                    |
 

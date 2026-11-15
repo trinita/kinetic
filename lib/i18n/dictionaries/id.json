@@ -54,10 +54,6 @@
     "ctaBody": "Ceritakan kepada kami. Kami senang membantu mewujudkannya.",
     "ctaButton": "Ngobrol via WhatsApp"
   },
-  "placeholder": {
-    "comingSoon": "Halaman ini sedang kami siapkan.",
-    "back": "Kembali ke beranda"
-  },
   "footer": {
     "tagline": "Bengkel kayu di balik Wood Knots. Furnitur dan produk kayu buatan tangan, dikerjakan sesuai pesanan.",
     "explore": "Jelajahi",
@@ -164,5 +160,25 @@
     "hoursTitle": "Jam buka",
     "directions": "Petunjuk arah di Google Maps",
     "mapTitle": "Peta lokasi bengkel Kinetic"
+  },
+  "search": {
+    "label": "Cari di situs",
+    "placeholder": "Cari produk, layanan, jam buka…",
+    "open": "Cari",
+    "close": "Tutup",
+    "loading": "Mencari…",
+    "empty": "Tidak ada hasil untuk “{q}”. Coba kata lain, atau tanya langsung via WhatsApp.",
+    "hint": "Coba: meja lukis, jam buka, cara memesan",
+    "results": "{n} hasil untuk “{q}”",
+    "seeAll": "Lihat semua hasil",
+    "intro": "Cari produk, layanan, proyek, artikel, dan info bengkel.",
+    "types": {
+      "product": "Produk",
+      "service": "Layanan",
+      "project": "Proyek",
+      "article": "Blog",
+      "member": "Tim",
+      "page": "Info"
+    }
   }
 }

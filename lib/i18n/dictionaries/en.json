@@ -54,10 +54,6 @@
     "ctaBody": "Tell us about it. We'd love to help make it real.",
     "ctaButton": "Chat on WhatsApp"
   },
-  "placeholder": {
-    "comingSoon": "We're still preparing this page.",
-    "back": "Back to home"
-  },
   "footer": {
     "tagline": "The workshop behind Wood Knots. Handmade furniture and wood products, made to order.",
     "explore": "Explore",
@@ -164,5 +160,25 @@
     "hoursTitle": "Opening hours",
     "directions": "Directions on Google Maps",
     "mapTitle": "Map showing the Kinetic workshop"
+  },
+  "search": {
+    "label": "Search the site",
+    "placeholder": "Search products, services, opening hours…",
+    "open": "Search",
+    "close": "Close",
+    "loading": "Searching…",
+    "empty": "No results for “{q}”. Try other words, or ask us on WhatsApp.",
+    "hint": "Try: painted table, opening hours, how to order",
+    "results": "{n} results for “{q}”",
+    "seeAll": "See all results",
+    "intro": "Search products, services, projects, articles and workshop info.",
+    "types": {
+      "product": "Product",
+      "service": "Service",
+      "project": "Project",
+      "article": "Blog",
+      "member": "Team",
+      "page": "Info"
+    }
   }
 }
