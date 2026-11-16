@@ -11,7 +11,8 @@ images:
     altEn: Close-up of the bench seat painted with colourful leaves and flowers
 summary: Bangku panjang yang dilukis tangan dari sandaran hingga dudukan dengan burung, bunga, dan dedaunan berwarna cerah.
 body: "Bangku panjang yang seluruh permukaannya dilukis tangan: burung, bunga, buah, dan dedaunan di atas latar hijau dan merah."
-woods: []
+woods:
+  - meranti
 finishes: []
 customizable: []
 dimensions: ""
