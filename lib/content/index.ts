@@ -1,5 +1,5 @@
 // Loads site content:
-// - products: content/products/<slug>.yaml (both languages in one file; edited in the admin at /keystatic)
+// - products: content/products/<slug>.yaml (both languages in one file; edited in the admin at /admin)
 // - everything else: content/<collection>/<slug>.<locale>.md (Indonesian required, English optional)
 // Drafts are shown in development (with a badge) and hidden in production builds.
 

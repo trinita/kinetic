@@ -137,12 +137,3 @@ test("chat API rejects other websites and malformed requests", async ({ request 
   const bad = await request.post("/api/chat", { data: { locale: "id", messages: [] } });
   expect(bad.status()).toBe(400);
 });
-
-test("admin is reachable at /admin and stays closed until GitHub login is set up", async ({ request }) => {
-  const res = await request.get("/admin", { maxRedirects: 0 });
-  expect(res.status()).toBe(307);
-  expect(res.headers()["location"]).toBe("/keystatic");
-  // Production uses GitHub storage; without the GitHub App credentials the API refuses.
-  const api = await request.get("/api/keystatic/github/login");
-  expect(api.status()).toBe(503);
-});

@@ -7,7 +7,7 @@ export type ProductCategory = (typeof productCategories)[number];
 
 const strings = z.array(z.string()).default([]);
 
-// ---- Products: one YAML file per product (edited in the admin, /keystatic), both languages inside.
+// ---- Products: one YAML file per product (edited in the admin, /admin), both languages inside.
 const translatedList = z.array(z.string()).default([]);
 
 export const productFile = z.object({

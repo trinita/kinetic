@@ -11,6 +11,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Pages only: skip Next internals, API routes, the admin (/keystatic) and any file with an extension.
-  matcher: ["/((?!_next|api|keystatic|.*\\..*).*)"],
+  // Pages only: skip Next internals, API routes, the admin (/admin) and any file with an extension.
+  matcher: ["/((?!_next|api|admin|.*\\..*).*)"],
 };

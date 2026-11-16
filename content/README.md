@@ -2,21 +2,21 @@
 
 ## Products: use the admin
 
-Products are edited in the admin editor, not by hand:
+Products are edited in the admin at **`/admin`** (e.g. <https://kinetic-red-nine.vercel.app/admin>), with a username and password:
 
-- **On your computer:** run `npm run dev`, open <http://localhost:3000/admin>. Saving writes the files in `content/products/` directly (commit and push them afterwards).
-- **On the live site:** open `/admin` (e.g. <https://kinetic-red-nine.vercel.app/admin>) and log in with GitHub. Saving commits to GitHub and Vercel updates the site in 1–2 minutes. Only GitHub accounts with write access to the `trinita/kinetic` repository can edit.
+- **Live site:** saving stores the change on GitHub automatically and Vercel updates the site in 1–2 minutes. Editors never need a GitHub account.
+- **On your computer** (`npm run dev`, <http://localhost:3000/admin>): saving writes the files in `content/products/` directly; commit and push them afterwards.
 
-Each product is one file, `content/products/<alamat>.yaml`, with Indonesian and English together. Photos are stored in `public/images/products/<alamat>/`. A product marked **Terbit (published)** only appears once category, summary, at least one photo, wood, size, lead time and availability are filled in; until then it stays hidden (the build log says what's missing).
+Each product is one file, `content/products/<alamat>.yaml` (Indonesian and English together); photos are in `public/images/products/<alamat>/`. A product set to **Terbit** only appears once category, summary, at least one photo, wood, size, lead time and availability are filled in. The admin shows what's missing.
 
-### Admin setup (one time, for the live site)
+### Admin setup (one time)
 
-1. Stop any running `npm run dev`, then start the editor in GitHub mode: `NEXT_PUBLIC_KEYSTATIC_STORAGE=github npm run dev`
-2. Open <http://localhost:3000/keystatic> and follow **Create GitHub App** (give it a name like `kinetic-admin`). GitHub asks you to confirm, then to **install** the app — choose **Only select repositories → trinita/kinetic**.
-3. Keystatic writes four values into a `.env` file in the project (never committed): `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`, `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`.
-4. In Vercel → Project → **Settings → Environment Variables**, add those four with the same values, then **Redeploy**.
-5. In GitHub → **Settings → Developer settings → GitHub Apps → your app**, add the callback URL `https://kinetic-red-nine.vercel.app/api/keystatic/github/oauth/callback` (and the same with your real domain later).
-6. Open `/admin` on the live site and log in with GitHub.
+1. **Create a login** (on your computer, in the project folder): `npm run admin:user`. Type a username and a password (at least 12 characters; it isn't shown or saved). It prints two lines: `ADMIN_USERS=…` and `ADMIN_SESSION_SECRET=…`. For several people, run it once per person and join the entries with a comma: `ADMIN_USERS=klien:…,trinita:…` (one `ADMIN_SESSION_SECRET` for all).
+2. **Create a GitHub token** so the live site can save: GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new token. Repository access: **Only select repositories → trinita/kinetic**. Permissions → Repository permissions → **Contents: Read and write**. Copy the token (it starts with `github_pat_`). Note its expiry date: the admin stops saving when it expires, so renew it before then.
+3. **Add to Vercel** → Project → Settings → Environment Variables: `ADMIN_USERS`, `ADMIN_SESSION_SECRET`, `GITHUB_TOKEN`. Then **Redeploy**.
+4. For local use, put `ADMIN_USERS` and `ADMIN_SESSION_SECRET` in `.env.local` too (`GITHUB_TOKEN` isn't needed on your computer).
+
+To remove someone's access, delete their entry from `ADMIN_USERS` and redeploy. To log everyone out, change `ADMIN_SESSION_SECRET`. Wrong passwords are limited to 5 tries per 15 minutes.
 
 ## Everything else: Markdown files
 

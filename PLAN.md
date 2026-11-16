@@ -129,7 +129,7 @@ NEXT_PUBLIC_WHATSAPP_NUMBER=6281399325549   # wa.me format: no +, spaces or dash
 - Product photos: 5 photos of 2 products taken from Instagram (`public/images/products/`); drafts in `content/products/` await details.
 - Logo: concept B with lowercase "kinetic" wordmark; palette and fonts as in section 6.
 
-- Admin: Keystatic at `/admin`, GitHub login, only the owner edits; products are YAML files edited there.
+- Admin: own `/admin` with username/password (the client has no GitHub access); saves commit to GitHub via a server-side token; products are YAML files edited there.
 
 ## 11. Open questions
 
