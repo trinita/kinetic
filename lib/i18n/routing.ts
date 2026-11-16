@@ -11,8 +11,8 @@ export const locales = ["id", "en"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "id";
 
-export function hasLocale(value: string): value is Locale {
-  return (locales as readonly string[]).includes(value);
+export function hasLocale(value: string | undefined): value is Locale {
+  return value !== undefined && (locales as readonly string[]).includes(value);
 }
 
 /** Path segments per page. `en` doubles as the internal folder name under app/[lang]. */

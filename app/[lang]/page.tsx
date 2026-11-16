@@ -37,7 +37,7 @@ export default async function Home() {
         </div>
         <div className="bg-walnut relative mx-auto aspect-[4/5] w-full max-w-72 overflow-hidden rounded-[2rem] shadow-xl md:max-w-sm">
           <Image
-            src="/images/products/meja-ukir-lukis-tropis-1.jpg"
+            src="/images/site/hero.jpg"
             alt=""
             fill
             priority

@@ -35,11 +35,19 @@ describe("product loader", () => {
     expect(p?.body).toBe("A simple bookshelf.");
   });
 
-  it("refuses to publish a product with TODOs or missing fields", () => {
+  it("hides a published product that is still incomplete, with a build warning", () => {
     useFixture("bad");
     process.env.SHOW_DRAFTS = "false";
-    expect(() => getProducts("id")).toThrow(
-      "content/products/kursi.id.md is published but incomplete: dimensions, TODO left in the text",
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    expect(getProducts("id")).toEqual([]);
+    expect(warn).toHaveBeenCalledWith(
+      "[content] products/kursi is published but hidden until complete — missing: dimensions, TODO left in the text",
     );
+  });
+
+  it("treats empty form fields as not filled in", () => {
+    useFixture("ok");
+    process.env.SHOW_DRAFTS = "true";
+    expect(getProduct("id", "meja-draf")).toMatchObject({ category: undefined, madeToOrder: undefined });
   });
 });

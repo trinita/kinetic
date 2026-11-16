@@ -17,11 +17,13 @@ export function parseDoc(source: string, file = "content file"): RawDoc {
 }
 
 export const isTodo = (v: unknown) => typeof v === "string" && /^\s*TODO\b/.test(v);
+/** Empty strings and TODO placeholders both mean "not filled in yet" (the admin form saves empty fields as ""). */
+const isMissing = (v: unknown) => isTodo(v) || (typeof v === "string" && v.trim() === "");
 
-/** Removes TODO placeholders: TODO strings become undefined, TODO array items are dropped. */
+/** Removes placeholders: TODO/empty strings and nulls become undefined, TODO/empty array items are dropped. */
 export function stripTodos(value: unknown): unknown {
-  if (isTodo(value)) return undefined;
-  if (Array.isArray(value)) return value.filter((v) => !isTodo(v)).map(stripTodos);
+  if (isMissing(value)) return undefined;
+  if (Array.isArray(value)) return value.filter((v) => !isMissing(v)).map(stripTodos);
   if (value && typeof value === "object") {
     return Object.fromEntries(
       Object.entries(value)

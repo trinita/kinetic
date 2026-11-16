@@ -1,0 +1,11 @@
+title: Kursi
+status: published
+category: kursi
+images:
+  - image: /images/products/kursi-1.jpg
+summary: Kursi.
+body: "Kursi kayu jati.\n\nTODO tambah cerita"
+woods: [jati]
+dimensions: ""
+leadTimeWeeks: 2
+madeToOrder: "yes"

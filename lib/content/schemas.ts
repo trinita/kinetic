@@ -7,42 +7,51 @@ export type ProductCategory = (typeof productCategories)[number];
 
 const strings = z.array(z.string()).default([]);
 
-// ---- Products: facts live in the Indonesian file; the English file only translates text.
-export const productId = z.object({
+// ---- Products: one YAML file per product (edited in the admin, /keystatic), both languages inside.
+const translatedList = z.array(z.string()).default([]);
+
+export const productFile = z.object({
   title: z.string(),
   status,
   featured: z.boolean().default(false),
   category: z.enum(productCategories).optional(),
-  woods: strings,
-  finishes: strings,
-  dimensions: z.string().optional(),
-  leadTimeWeeks: z.number().positive().optional(),
-  madeToOrder: z.boolean().optional(),
-  priceFrom: z.number().positive().optional(),
-  customizable: strings,
   images: z
-    .array(z.object({ src: z.string().startsWith("/images/"), alt: z.string().optional() }))
+    .array(
+      z.object({
+        image: z.string().startsWith("/images/"),
+        alt: z.string().optional(),
+        altEn: z.string().optional(),
+      }),
+    )
     .default([]),
   summary: z.string().optional(),
+  body: z.string().default(""),
+  woods: translatedList,
+  finishes: translatedList,
+  customizable: translatedList,
+  dimensions: z.string().optional(),
+  leadTimeWeeks: z.number().int().positive().optional(),
+  madeToOrder: z.enum(["yes", "no"]).optional(),
+  priceFrom: z.number().int().positive().optional(),
+  en: z
+    .object({
+      title: z.string().optional(),
+      summary: z.string().optional(),
+      body: z.string().optional(),
+      woods: translatedList,
+      finishes: translatedList,
+      customizable: translatedList,
+    })
+    .default({ woods: [], finishes: [], customizable: [] }),
 });
 
-export const productEn = z.object({
-  title: z.string().optional(),
-  status,
-  woods: z.array(z.string()).optional(),
-  finishes: z.array(z.string()).optional(),
-  customizable: z.array(z.string()).optional(),
-  images: z.array(z.object({ alt: z.string().optional() })).optional(),
-  summary: z.string().optional(),
-});
-
-/** Fields a product needs before it can be published. */
+/** Fields a product needs before it can be shown on the live site. */
 export const productRequiredToPublish = [
   "category",
+  "summary",
   "dimensions",
   "leadTimeWeeks",
   "madeToOrder",
-  "summary",
 ] as const;
 
 // ---- Services

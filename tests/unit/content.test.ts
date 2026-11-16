@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { bodyHasTodo, parseDoc, stripTodos } from "@/lib/content/parse";
-import { productId } from "@/lib/content/schemas";
+import { productFile } from "@/lib/content/schemas";
 import { fill, formatPrice } from "@/lib/format";
 
 describe("parseDoc", () => {
@@ -41,8 +41,8 @@ describe("bodyHasTodo", () => {
 
 describe("product schema", () => {
   it("defaults to draft and rejects unknown categories", () => {
-    expect(productId.parse({ title: "Meja" }).status).toBe("draft");
-    expect(productId.safeParse({ title: "Meja", category: "sofa" }).success).toBe(false);
+    expect(productFile.parse({ title: "Meja" }).status).toBe("draft");
+    expect(productFile.safeParse({ title: "Meja", category: "sofa" }).success).toBe(false);
   });
 });
 

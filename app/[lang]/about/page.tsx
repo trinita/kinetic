@@ -41,7 +41,7 @@ export default async function AboutPage() {
           </div>
           <div className="bg-walnut relative aspect-[4/5] overflow-hidden rounded-3xl">
             <Image
-              src="/images/products/meja-ukir-lukis-tropis-2.jpg"
+              src="/images/site/about.jpg"
               alt=""
               fill
               sizes="(min-width: 768px) 40vw, 100vw"

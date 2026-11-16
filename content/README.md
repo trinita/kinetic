@@ -1,10 +1,29 @@
 # Website content — how to fill in
 
+## Products: use the admin
+
+Products are edited in the admin editor, not by hand:
+
+- **On your computer:** run `npm run dev`, open <http://localhost:3000/admin>. Saving writes the files in `content/products/` directly (commit and push them afterwards).
+- **On the live site:** open `/admin` (e.g. <https://kinetic-red-nine.vercel.app/admin>) and log in with GitHub. Saving commits to GitHub and Vercel updates the site in 1–2 minutes. Only GitHub accounts with write access to the `trinita/kinetic` repository can edit.
+
+Each product is one file, `content/products/<alamat>.yaml`, with Indonesian and English together. Photos are stored in `public/images/products/<alamat>/`. A product marked **Terbit (published)** only appears once category, summary, at least one photo, wood, size, lead time and availability are filled in; until then it stays hidden (the build log says what's missing).
+
+### Admin setup (one time, for the live site)
+
+1. Stop any running `npm run dev`, then start the editor in GitHub mode: `NEXT_PUBLIC_KEYSTATIC_STORAGE=github npm run dev`
+2. Open <http://localhost:3000/keystatic> and follow **Create GitHub App** (give it a name like `kinetic-admin`). GitHub asks you to confirm, then to **install** the app — choose **Only select repositories → trinita/kinetic**.
+3. Keystatic writes four values into a `.env` file in the project (never committed): `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`, `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`.
+4. In Vercel → Project → **Settings → Environment Variables**, add those four with the same values, then **Redeploy**.
+5. In GitHub → **Settings → Developer settings → GitHub Apps → your app**, add the callback URL `https://kinetic-red-nine.vercel.app/api/keystatic/github/oauth/callback` (and the same with your real domain later).
+6. Open `/admin` on the live site and log in with GitHub.
+
+## Everything else: Markdown files
+
 All text on the website that isn't a menu label lives here, as Markdown files:
 
 | Folder          | What                                           | Web page                         |
 | --------------- | ---------------------------------------------- | -------------------------------- |
-| `products/`     | Products in the catalog                        | `/produk`, `/produk/<nama-file>` |
 | `services/`     | Services                                       | `/layanan`                       |
 | `case-studies/` | Projects (finished work for a client or place) | `/proyek`, `/proyek/<nama-file>` |
 | `blog/`         | Articles (care tips, behind the scenes…)       | `/blog`, `/blog/<nama-file>`     |
@@ -26,25 +45,6 @@ The file name becomes the web address, in both languages: `meja-ukir-lukis-tropi
 
 ## Adding something new
 
-Copy the `_template.id.md` (and `_template.en.md`) in that folder, rename them, and fill them in.
+Copy the `_template.id.md` (and `_template.en.md`) in that folder, rename them, and fill them in. (Products: use the admin instead.)
 Photos go in `public/images/<folder>/`, e.g. `public/images/products/meja-kopi-jati-1.jpg`.
 The first photo is the main one shown in lists. Landscape or portrait both work; at least 1200 px wide looks best.
-
-## Product fields
-
-| Field           | What to write                                                                            | Example                |
-| --------------- | ---------------------------------------------------------------------------------------- | ---------------------- |
-| `title`         | Product name                                                                             | Meja Ukir Lukis Tropis |
-| `featured`      | `true` to show it on the home page                                                       | true                   |
-| `category`      | One of: meja, kursi, bangku, rak, lemari, dekorasi, lainnya                              | meja                   |
-| `woods`         | Wood types                                                                               | [jati, mahoni]         |
-| `finishes`      | Finish / paint                                                                           | [cat akrilik, pernis]  |
-| `dimensions`    | Size                                                                                     | Ø 60 × 55 cm           |
-| `leadTimeWeeks` | How many weeks it takes to make                                                          | 3                      |
-| `madeToOrder`   | `true` = can be ordered again, `false` = one-off piece                                   | true                   |
-| `priceFrom`     | Starting price in rupiah (numbers only), or empty to show "Tanya harga via WhatsApp"     | 2500000                |
-| `customizable`  | What a customer can change                                                               | [ukuran, warna, motif] |
-| `images`        | Photos, each with a short description (read aloud to blind visitors, and used by search) |                        |
-| `summary`       | One or two sentences for the catalog card                                                |                        |
-
-The text below the second `---` is the full description on the product page. `## Heading` makes a heading, `- item` makes a bullet list, `**bold**` makes bold text.

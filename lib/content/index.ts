@@ -1,5 +1,6 @@
-// Loads content/<collection>/<slug>.<locale>.md files.
-// Indonesian is required and holds the facts; English is optional and falls back to Indonesian.
+// Loads site content:
+// - products: content/products/<slug>.yaml (both languages in one file; edited in the admin at /keystatic)
+// - everything else: content/<collection>/<slug>.<locale>.md (Indonesian required, English optional)
 // Drafts are shown in development (with a badge) and hidden in production builds.
 
 import "server-only";
@@ -7,7 +8,8 @@ import fs from "node:fs";
 import path from "node:path";
 import type { z } from "zod";
 import type { Locale } from "@/lib/i18n/routing";
-import { bodyHasTodo, parseDoc } from "./parse";
+import { parse as parseYaml } from "yaml";
+import { bodyHasTodo, parseDoc, stripTodos } from "./parse";
 import * as s from "./schemas";
 
 // A fixed path so the bundler ships only content/ (tests point process.cwd() at fixtures instead).
@@ -49,7 +51,11 @@ function readCollection<I extends z.ZodTypeAny, E extends z.ZodTypeAny>(
   });
 }
 
-/** Published entries only, unless drafts are shown. Throws if a published entry still has TODOs. */
+/**
+ * Published entries only, unless drafts are shown. A published entry that is incomplete (missing
+ * required fields or still containing TODO) is hidden with a build warning instead of failing the
+ * build, so one unfinished edit in the admin never blocks the rest of the site from updating.
+ */
 function visible<
   X extends { slug: string; id: { status: "draft" | "published" }; idBody: string; missing?: string[] },
 >(dir: string, entries: X[]): X[] {
@@ -57,8 +63,11 @@ function visible<
     if (e.id.status !== "published") return showDrafts();
     const problems = [...(e.missing ?? [])];
     if (bodyHasTodo(e.idBody)) problems.push("TODO left in the text");
-    if (problems.length) {
-      throw new Error(`content/${dir}/${e.slug}.id.md is published but incomplete: ${problems.join(", ")}`);
+    if (problems.length && !showDrafts()) {
+      console.warn(
+        `[content] ${dir}/${e.slug} is published but hidden until complete — missing: ${problems.join(", ")}`,
+      );
+      return false;
     }
     return true;
   });
@@ -71,43 +80,74 @@ function pickEn<E extends { status: string }>(locale: Locale, en?: E): E | undef
 
 // ---------- Products
 
+type ProductFile = z.infer<typeof s.productFile>;
+
+function readProducts(): {
+  slug: string;
+  id: ProductFile & { status: "draft" | "published" };
+  idBody: string;
+  missing: string[];
+}[] {
+  const dir = path.join(contentDir(), "products");
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => /^[a-z0-9-]+\.yaml$/.test(f))
+    .map((f) => {
+      const file = path.join("content/products", f);
+      const result = s.productFile.safeParse(
+        stripTodos(parseYaml(fs.readFileSync(path.join(dir, f), "utf8")) ?? {}),
+      );
+      if (!result.success) {
+        throw new Error(
+          `${file}: ${result.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ")}`,
+        );
+      }
+      const p = result.data;
+      return {
+        slug: f.replace(/\.yaml$/, ""),
+        id: p,
+        idBody: p.body,
+        missing: [
+          ...s.productRequiredToPublish.filter((k) => p[k] === undefined),
+          ...(p.woods.length ? [] : ["woods"]),
+          ...(p.images.length ? [] : ["images"]),
+        ],
+      };
+    });
+}
+
 export type Product = ReturnType<typeof localizeProduct>;
 
-function localizeProduct(e: Entry<z.infer<typeof s.productId>, z.infer<typeof s.productEn>>, locale: Locale) {
-  const en = pickEn(locale, e.en);
+function localizeProduct(e: { slug: string; id: ProductFile }, locale: Locale) {
+  const p = e.id;
+  const en = locale === "en" ? p.en : undefined;
+  const pick = (idList: string[], enList?: string[]) => (enList?.length ? enList : idList);
   return {
     slug: e.slug,
-    draft: e.id.status !== "published",
-    translated: locale === "id" || !!en,
-    featured: e.id.featured,
-    category: e.id.category,
-    title: en?.title ?? e.id.title,
-    summary: en?.summary ?? e.id.summary,
-    woods: en?.woods?.length ? en.woods : e.id.woods,
-    finishes: en?.finishes?.length ? en.finishes : e.id.finishes,
-    customizable: en?.customizable?.length ? en.customizable : e.id.customizable,
-    dimensions: e.id.dimensions,
-    leadTimeWeeks: e.id.leadTimeWeeks,
-    madeToOrder: e.id.madeToOrder,
-    priceFrom: e.id.priceFrom,
-    images: e.id.images.map((img, i) => ({
-      src: img.src,
-      alt: en?.images?.[i]?.alt ?? img.alt ?? e.id.title,
+    draft: p.status !== "published",
+    translated: locale === "id" || !!(en?.title || en?.summary || en?.body),
+    featured: p.featured,
+    category: p.category,
+    title: en?.title ?? p.title,
+    summary: en?.summary ?? p.summary,
+    woods: pick(p.woods, en?.woods),
+    finishes: pick(p.finishes, en?.finishes),
+    customizable: pick(p.customizable, en?.customizable),
+    dimensions: p.dimensions,
+    leadTimeWeeks: p.leadTimeWeeks,
+    madeToOrder: p.madeToOrder === undefined ? undefined : p.madeToOrder === "yes",
+    priceFrom: p.priceFrom,
+    images: p.images.map((img) => ({
+      src: img.image,
+      alt: (locale === "en" ? img.altEn : undefined) ?? img.alt ?? p.title,
     })),
-    body: (en && e.enBody) || e.idBody,
+    body: (en?.body || p.body).trim(),
   };
 }
 
 export function getProducts(locale: Locale): Product[] {
-  const entries = readCollection("products", s.productId, s.productEn).map((e) => ({
-    ...e,
-    missing: [
-      ...s.productRequiredToPublish.filter((k) => e.id[k] === undefined),
-      ...(e.id.woods.length ? [] : ["woods"]),
-      ...(e.id.images.length ? [] : ["images"]),
-    ],
-  }));
-  return visible("products", entries)
+  return visible("products", readProducts())
     .map((e) => localizeProduct(e, locale))
     .sort((a, b) => Number(b.featured) - Number(a.featured) || a.title.localeCompare(b.title));
 }

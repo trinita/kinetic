@@ -4,7 +4,7 @@ status: draft # TODO cek isi, lalu ubah ke published
 order: 2
 summary: Motif ukiran dan lukisan tangan penuh warna untuk meja, bangku, dan produk kayu lainnya.
 image:
-  src: /images/products/bangku-lukis-flora-fauna-2.jpg
+  src: /images/services/ukir-dan-lukis.jpg
   alt: Detail lukisan tangan daun dan bunga warna-warni pada dudukan bangku
 ---
 
