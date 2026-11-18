@@ -3,14 +3,14 @@ import { expect, test } from "@playwright/test";
 test("Indonesian home page is the default", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("lang", "id");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Dibuat dengan tangan");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Setiap goresan memiliki cerita");
   await expect(page).toHaveTitle(/Kinetic/);
 });
 
 test("English home page lives under /en", async ({ page }) => {
   await page.goto("/en");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Made by hand");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Every brushstroke tells a story");
 });
 
 test("WhatsApp buttons open a chat with the workshop number", async ({ page }) => {

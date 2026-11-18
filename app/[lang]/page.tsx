@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 import { href } from "@/lib/i18n/routing";
-import { getProducts } from "@/lib/content";
-import { whatsappLink } from "@/lib/site";
-import { WhatsAppIcon } from "@/components/ui/icons";
+import { getPage, getProducts } from "@/lib/content";
+import { site } from "@/lib/site";
 import { buttonStyles, InstagramLink, WhatsAppButton } from "@/components/ui/links";
+import { DraftBadge } from "@/components/ui/badges";
 import { ProductCard } from "@/components/product/product-card";
 import { toCard } from "@/components/product/to-card";
 
@@ -15,40 +15,46 @@ export default async function Home() {
   const featured = getProducts(locale)
     .filter((p) => p.featured)
     .slice(0, 3);
+  // "From raw timber to finish" steps; a draft until the workshop has checked the texts.
+  const story = getPage(locale, "home-story");
 
   return (
     <>
-      {/* Hero */}
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-[3fr_2fr] md:py-24">
-        <div>
-          <p className="text-accent text-xs font-bold tracking-[0.3em] uppercase">{t.eyebrow}</p>
-          <h1 className="font-display text-accent-strong mt-4 text-5xl leading-[1.05] font-semibold text-balance sm:text-6xl">
-            {t.title}
-          </h1>
-          <p className="text-muted mt-6 max-w-xl text-lg leading-relaxed">{t.lead}</p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link href={href(locale, "products")} className={buttonStyles.primary}>
-              {t.ctaProducts}
-            </Link>
-            <WhatsAppButton message={t.whatsappMessage} variant="secondary">
-              {t.ctaWhatsapp}
-            </WhatsAppButton>
+      {/* Hero: the painted bench in full colour, washed on the text side so the headline stays readable */}
+      <section className="relative isolate flex min-h-[560px] items-center overflow-hidden py-20 md:min-h-[600px]">
+        <Image
+          src="/images/site/hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover"
+        />
+        <div aria-hidden="true" className="bg-bg/70 absolute inset-0 -z-10 md:hidden" />
+        <div
+          aria-hidden="true"
+          className="from-bg/80 via-bg/45 to-bg/5 absolute inset-0 -z-10 hidden bg-linear-to-r md:block"
+        />
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <div className="max-w-3xl">
+            <h1 className="font-hero text-fg text-5xl leading-[1.05] font-bold tracking-[-0.025em] text-balance sm:text-6xl md:text-7xl">
+              {t.title}
+            </h1>
+            <p className="text-fg mt-6 max-w-xl text-lg leading-relaxed font-medium">{t.lead}</p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link href={href(locale, "products")} className={buttonStyles.primary}>
+                {t.ctaProducts}
+              </Link>
+              <WhatsAppButton message={t.whatsappMessage} variant="secondary">
+                {t.ctaWhatsapp}
+              </WhatsAppButton>
+            </div>
           </div>
-        </div>
-        <div className="bg-walnut relative mx-auto aspect-[4/5] w-full max-w-72 overflow-hidden rounded-[2rem] shadow-xl md:max-w-sm">
-          <Image
-            src="/images/site/hero.jpg"
-            alt=""
-            fill
-            priority
-            sizes="(min-width: 768px) 384px, 288px"
-            className="object-cover"
-          />
         </div>
       </section>
 
       {/* Featured work */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="font-display text-accent-strong text-3xl font-semibold sm:text-4xl">
@@ -80,46 +86,138 @@ export default async function Home() {
         )}
       </section>
 
-      {/* How to order */}
-      <section id="order" className="bg-surface border-border scroll-mt-20 border-y">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="font-display text-accent-strong text-3xl font-semibold sm:text-4xl">
-            {t.processTitle}
-          </h2>
-          <p className="text-muted mt-2 text-lg">{t.processIntro}</p>
-          <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {t.steps.map((step, i) => (
-              <li key={step.title}>
-                <span className="font-display text-jati text-4xl font-semibold">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display text-accent-strong mt-2 text-xl font-semibold">{step.title}</h3>
-                <p className="text-muted mt-2 leading-relaxed">{step.body}</p>
+      {/* Story: from raw timber to finish */}
+      {story && story.steps.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 pt-4 pb-24 sm:px-6">
+          <div className="mb-14 text-center">
+            {story.draft && <DraftBadge label={dict.common.draft} />}
+            <h2 className="font-display text-accent-strong mt-2 text-3xl font-semibold sm:text-4xl">
+              {story.title}
+            </h2>
+          </div>
+          <ol className="grid gap-16 md:gap-28">
+            {story.steps.map((step, i) => (
+              <li key={step.label} className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
+                <div className={i % 2 ? "md:order-2 md:pl-10" : "md:pr-10"}>
+                  <p className="text-accent text-xs font-bold tracking-[0.2em] uppercase">{step.label}</p>
+                  <h3 className="font-display text-accent-strong mt-3 text-2xl font-semibold sm:text-3xl">
+                    {step.title}
+                  </h3>
+                  <p className="text-muted mt-4 text-lg leading-relaxed">{step.body}</p>
+                </div>
+                <div
+                  className={`bg-surface relative aspect-[4/3] overflow-hidden rounded-[2rem] ${i % 2 ? "md:order-1" : ""}`}
+                >
+                  <Image
+                    src={step.image.src}
+                    alt={step.image.alt}
+                    fill
+                    sizes="(min-width: 768px) 560px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
               </li>
             ))}
           </ol>
+        </section>
+      )}
+
+      {/* How to order: vertical timeline */}
+      <section id="order" className="bg-surface border-border scroll-mt-20 border-y py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <div className="mb-14 text-center">
+            <h2 className="font-display text-accent-strong text-3xl font-semibold sm:text-4xl">
+              {t.processTitle}
+            </h2>
+            <p className="text-muted mt-3 text-lg">{t.processIntro}</p>
+          </div>
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="bg-jati/30 absolute top-4 bottom-4 left-[27px] w-px md:left-1/2 md:-ml-px"
+            />
+            <ol className="space-y-12">
+              {t.steps.map((step, i) => {
+                const right = i % 2 === 1;
+                return (
+                  <li
+                    key={step.title}
+                    className="relative flex flex-col pl-20 md:flex-row md:items-center md:justify-between md:pl-0"
+                  >
+                    {right && <div className="hidden md:block md:w-[45%]" />}
+                    <div className={`md:w-[45%] ${right ? "md:pl-12" : "md:pr-12 md:text-right"}`}>
+                      <h3 className="font-display text-accent-strong text-xl font-semibold">{step.title}</h3>
+                      <p className="text-muted mt-2 leading-relaxed">{step.body}</p>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      className="bg-jati border-surface text-krem font-display absolute top-0 left-0 flex size-14 items-center justify-center rounded-full border-4 font-semibold md:top-auto md:left-1/2 md:-ml-7"
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {!right && <div className="hidden md:block md:w-[45%]" />}
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+          <div className="mt-14 text-center">
+            <WhatsAppButton message={t.whatsappMessage}>{t.orderCta}</WhatsAppButton>
+          </div>
         </div>
       </section>
 
-      {/* Call to action */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="bg-walnut text-krem relative overflow-hidden rounded-[2rem] px-8 py-14 sm:px-14">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 opacity-20 [background:repeating-radial-gradient(ellipse_at_100%_120%,transparent_0_18px,var(--color-jati)_19px_20px)]"
-          />
-          <div className="relative max-w-xl">
-            <h2 className="font-display text-3xl font-semibold sm:text-4xl">{t.ctaTitle}</h2>
-            <p className="text-oak mt-3 text-lg">{t.ctaBody}</p>
-            <a
-              href={whatsappLink(t.whatsappMessage)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-oak text-walnut mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold transition hover:opacity-90"
-            >
-              <WhatsAppIcon className="size-5" />
-              {t.ctaButton}
-            </a>
+      {/* Visit the workshop */}
+      <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+        <div className="bg-surface border-border flex flex-col overflow-hidden rounded-[2rem] border md:flex-row">
+          <div className="flex flex-col justify-center p-8 sm:p-10 md:w-1/2 md:p-14">
+            <h2 className="font-display text-accent-strong text-3xl font-semibold sm:text-4xl">
+              {t.visitTitle}
+            </h2>
+            <p className="text-muted mt-4 text-lg leading-relaxed">{t.visitBody}</p>
+            <dl className="mt-8 space-y-6">
+              <div>
+                <dt className="text-accent text-xs font-bold tracking-[0.2em] uppercase">
+                  {dict.contact.addressTitle}
+                </dt>
+                <dd className="mt-2 font-medium">
+                  <address className="not-italic">
+                    {site.address.street}
+                    <br />
+                    {site.address.area}, {site.address.city}
+                  </address>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-accent text-xs font-bold tracking-[0.2em] uppercase">
+                  {dict.contact.hoursTitle}
+                </dt>
+                <dd className="mt-2 font-medium">
+                  {dict.footer.hours}
+                  <br />
+                  <span className="text-muted">{dict.footer.closed}</span>
+                </dd>
+              </div>
+            </dl>
+            <div className="mt-10">
+              <a
+                href={site.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${buttonStyles.secondary} bg-bg`}
+              >
+                {dict.contact.directions}
+              </a>
+            </div>
+          </div>
+          <div className="bg-walnut relative aspect-square md:aspect-auto md:w-1/2">
+            <Image
+              src="/images/site/visit.jpg"
+              alt=""
+              fill
+              sizes="(min-width: 768px) 576px, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>

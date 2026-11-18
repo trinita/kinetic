@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "projectId": "8d38723a-9e0b-437b-8ba0-79a0f466d02c",
+  "brandAssets": { "logo": "brand-kinetic-logo.svg", "logoDark": "brand-kinetic-logo-dark.svg" },
+  "targets": {
+    "/ (home)": {
+      "baselineDraftId": "4112ad7f-8dd1-4561-8f27-f535e034e987",
+      "activeDraftId": "4112ad7f-8dd1-4561-8f27-f535e034e987",
+      "branches": {
+        "A calm gallery": "9e9d61b4-74d8-4478-ae04-8138dffba16b",
+        "B colourful craft": "54f75b58-1492-4ae6-9706-23fb72fab78f",
+        "C workshop story": "db872f09-f381-4efc-ac4b-c979b316c888"
+      },
+      "model": "gemini-3.1-pro",
+      "contextFiles": [".superdesign/design-system.md", "app/[lang]/page.tsx", "components/layout/header.tsx", "components/layout/footer.tsx", "components/ui/links.tsx", "components/product/product-card.tsx", "app/globals.css"],
+      "contentAssets": {
+        "photos/bench-front": "5430e23a-9357-4e68-beef-c7cb89eb1706",
+        "photos/bench-closeup": "edae4ac0-7339-4989-946c-457ed4b006e1",
+        "photos/table-top": "f656f1e4-9583-4711-8924-e25508d27a6b",
+        "photos/table-full": "0abe69ce-81b1-445e-8ba7-532d24b5cb42",
+        "photos/table-side": "b3b18ccb-ad8f-42e3-84d2-055f6b26d7e6",
+        "screenshots/current-home-desktop": "c6dbfc4c-832f-408a-a31d-639ef9597e7d"
+      }
+    }
+  }
+}

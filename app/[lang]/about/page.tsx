@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 import { href } from "@/lib/i18n/routing";
-import { getPage } from "@/lib/content";
+import { getPage, getTeam } from "@/lib/content";
 import { PageHeader, Section } from "@/components/ui/page-header";
 import { Prose } from "@/components/ui/prose";
 import { DraftBadge } from "@/components/ui/badges";
@@ -32,12 +32,14 @@ export default async function AboutPage() {
                 <Prose>{story.body}</Prose>
               </>
             )}
-            <Link
-              href={href(locale, "team")}
-              className="text-accent mt-4 inline-block font-semibold underline underline-offset-4"
-            >
-              {t.teamLink} →
-            </Link>
+            {getTeam(locale).length > 0 && (
+              <Link
+                href={href(locale, "team")}
+                className="text-accent mt-4 inline-block font-semibold underline underline-offset-4"
+              >
+                {t.teamLink} →
+              </Link>
+            )}
           </div>
           <div className="bg-walnut relative aspect-[4/5] overflow-hidden rounded-3xl">
             <Image

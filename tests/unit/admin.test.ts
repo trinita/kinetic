@@ -20,8 +20,10 @@ import { parseUsers } from "@/lib/admin/users";
 describe("passwords", () => {
   it("verifies the right password and rejects others", async () => {
     const hash = await hashPassword("kayu-jati-2026!");
-    expect(hash).toMatch(/^scrypt\$\d+\$/);
+    expect(hash).toMatch(/^scrypt:\d+:/);
+    expect(hash).not.toContain("$"); // "$" gets eaten by Next's .env variable expansion
     expect(await verifyPassword("kayu-jati-2026!", hash)).toBe(true);
+    expect(await verifyPassword("kayu-jati-2026!", hash.replaceAll(":", "$"))).toBe(true); // older format
     expect(await verifyPassword("kayu-jati-2026", hash)).toBe(false);
     expect(await verifyPassword("anything", "not-a-hash")).toBe(false);
   });
@@ -53,7 +55,7 @@ describe("sessions", () => {
 
 describe("ADMIN_USERS", () => {
   it("parses several accounts and ignores malformed entries", () => {
-    const users = parseUsers("Klien:scrypt$1$a$b, owner:scrypt$1$c$d,broken,nohash:plain");
+    const users = parseUsers("Klien:scrypt:1:a:b, owner:scrypt$1$c$d,broken,nohash:plain");
     expect([...users.keys()]).toEqual(["klien", "owner"]);
   });
 });

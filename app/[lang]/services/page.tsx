@@ -27,10 +27,10 @@ export default async function ServicesPage() {
               <section
                 key={s.slug}
                 id={s.slug}
-                className="border-border bg-surface grid scroll-mt-24 overflow-hidden rounded-3xl border md:grid-cols-[2fr_3fr]"
+                className={`border-border bg-surface grid scroll-mt-24 overflow-hidden rounded-3xl border ${s.image ? "md:grid-cols-[2fr_3fr]" : ""}`}
               >
-                <div className="bg-walnut relative min-h-56">
-                  {s.image && (
+                {s.image && (
+                  <div className="bg-walnut relative min-h-56">
                     <Image
                       src={s.image.src}
                       alt={s.image.alt ?? ""}
@@ -38,8 +38,8 @@ export default async function ServicesPage() {
                       sizes="(min-width: 768px) 40vw, 100vw"
                       className="object-cover"
                     />
-                  )}
-                </div>
+                  </div>
+                )}
                 <div className="p-8">
                   {s.draft && <DraftBadge label={dict.common.draft} />}
                   <h2 className="font-display text-accent-strong mt-2 text-3xl font-semibold">{s.title}</h2>

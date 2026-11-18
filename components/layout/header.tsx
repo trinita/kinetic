@@ -7,11 +7,14 @@ import { WhatsAppIcon } from "@/components/ui/icons";
 import { NavLinks } from "./nav-links";
 import { LanguageSwitcher } from "./language-switcher";
 import { SearchDialog } from "@/components/search/search-dialog";
-import { mainNav } from "./nav-items";
+import { mainNav, withContent } from "./nav-items";
 
 export async function Header() {
   const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
-  const items = mainNav.map((key) => ({ href: href(locale, key), label: dict.nav[key] }));
+  const items = withContent(locale, mainNav).map((key) => ({
+    href: href(locale, key),
+    label: dict.nav[key],
+  }));
   const wa = whatsappLink(dict.home.whatsappMessage);
 
   return (

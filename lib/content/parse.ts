@@ -36,3 +36,12 @@ export function stripTodos(value: unknown): unknown {
 
 /** True if the Markdown body still contains a TODO placeholder. */
 export const bodyHasTodo = (body: string) => /\bTODO\b/.test(body);
+
+/** The text visitors see: lines that start with TODO (notes for whoever fills in the content) are removed. */
+export const withoutTodoLines = (body: string) =>
+  body
+    .split("\n")
+    .filter((line) => !/^\s*(?:[-*]\s+)?TODO\b/.test(line))
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();

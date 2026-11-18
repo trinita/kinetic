@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { bodyHasTodo, parseDoc, stripTodos } from "@/lib/content/parse";
+import { bodyHasTodo, parseDoc, stripTodos, withoutTodoLines } from "@/lib/content/parse";
 import { productFile } from "@/lib/content/schemas";
 import { fill, formatPrice } from "@/lib/format";
 
@@ -50,5 +50,16 @@ describe("format", () => {
   it("fills placeholders and formats rupiah", () => {
     expect(fill("Mulai {price}", { price: "Rp 1" })).toBe("Mulai Rp 1");
     expect(formatPrice("id", 2500000).replace(/\s/g, " ")).toBe("Rp 2.500.000");
+  });
+});
+
+describe("withoutTodoLines", () => {
+  it("removes TODO notes so visitors never see them", () => {
+    expect(withoutTodoLines("Satu.\n\nTODO jelaskan alur.\n\nDua.")).toBe("Satu.\n\nDua.");
+    expect(withoutTodoLines("- kayu jati\n- TODO motif lain")).toBe("- kayu jati");
+    expect(withoutTodoLines("TODO saja")).toBe("");
+  });
+  it("keeps text that only mentions TODO mid-sentence", () => {
+    expect(withoutTodoLines("Kata TODO di tengah.")).toBe("Kata TODO di tengah.");
   });
 });

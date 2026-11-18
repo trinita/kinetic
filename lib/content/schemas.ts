@@ -91,6 +91,23 @@ export const memberId = z.object({
 });
 export const memberEn = z.object({ status, role: z.string().optional() });
 
-// ---- Standalone pages (about)
-export const pageId = z.object({ title: z.string(), status });
-export const pageEn = z.object({ title: z.string().optional(), status });
+// ---- Standalone pages (about, home-story)
+/** Optional illustrated steps, e.g. the "from raw timber to finish" story on the homepage. */
+const pageStep = z.object({
+  label: z.string(),
+  title: z.string(),
+  body: z.string(),
+  image: z.object({ src: z.string(), alt: z.string() }),
+});
+const pageStepEn = z.object({
+  label: z.string().optional(),
+  title: z.string().optional(),
+  body: z.string().optional(),
+  alt: z.string().optional(),
+});
+export const pageId = z.object({ title: z.string(), status, steps: z.array(pageStep).default([]) });
+export const pageEn = z.object({
+  title: z.string().optional(),
+  status,
+  steps: z.array(pageStepEn).default([]),
+});

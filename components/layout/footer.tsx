@@ -4,7 +4,7 @@ import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 import { href } from "@/lib/i18n/routing";
 import { site, whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "@/components/ui/icons";
-import { footerNav } from "./nav-items";
+import { footerNav, withContent } from "./nav-items";
 
 /** Current year for the copyright line, refreshed daily. */
 async function currentYear() {
@@ -28,7 +28,7 @@ export async function Footer() {
         <div>
           <h2 className="font-display text-lg font-semibold">{dict.footer.explore}</h2>
           <ul className="text-oak mt-3 space-y-2 text-sm">
-            {footerNav.map((key) => (
+            {withContent(locale, footerNav).map((key) => (
               <li key={key}>
                 <Link href={href(locale, key)} className="hover:text-krem">
                   {dict.nav[key]}

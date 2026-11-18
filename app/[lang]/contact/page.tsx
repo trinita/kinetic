@@ -42,9 +42,9 @@ export default async function ContactPage() {
               />
             </div>
           </div>
-          <div className="space-y-8">
+          <div className="flex flex-col gap-8">
             <VisitInfo dict={dict} />
-            <WorkshopMap title={t.mapTitle} />
+            <WorkshopMap title={t.mapTitle} className="md:h-auto md:flex-1" />
           </div>
         </div>
       </Section>

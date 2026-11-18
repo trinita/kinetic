@@ -8,7 +8,7 @@ export function parseUsers(value = process.env.ADMIN_USERS ?? ""): Map<string, s
     if (i <= 0) continue;
     const name = entry.slice(0, i).trim().toLowerCase();
     const hash = entry.slice(i + 1).trim();
-    if (name && hash.startsWith("scrypt$")) users.set(name, hash);
+    if (name && /^scrypt[:$]/.test(hash)) users.set(name, hash);
   }
   return users;
 }

@@ -21,15 +21,15 @@
     "switchLanguage": "Change language"
   },
   "home": {
-    "eyebrow": "The workshop behind Wood Knots",
-    "title": "Made by hand, built to last a lifetime.",
-    "lead": "Tables, chairs, shelves and other wood pieces made in our own workshop — from choosing the timber to the final finish. Tell us what you need and we'll build it.",
+    "title": "Every brushstroke tells a story.",
+    "lead": "See how we turn raw wood into functional art, straight from our workshop in Jatiasih.",
     "ctaProducts": "See products",
     "ctaWhatsapp": "Order on WhatsApp",
     "whatsappMessage": "Hello Kinetic, I'd like to ask about your wood products.",
     "featuredTitle": "Selected work",
     "featuredIntro": "A few pieces fresh out of our workshop.",
     "seeAll": "See all products",
+    "storyTitle": "From raw timber to the final finish",
     "processTitle": "How to order",
     "processIntro": "Everything is made to order. Here's how it works:",
     "steps": [
@@ -50,9 +50,9 @@
         "body": "Collect your piece at the workshop, or we'll help arrange delivery."
       }
     ],
-    "ctaTitle": "Have your own furniture idea?",
-    "ctaBody": "Tell us about it. We'd love to help make it real.",
-    "ctaButton": "Chat on WhatsApp"
+    "orderCta": "Start your order",
+    "visitTitle": "Visit our workshop",
+    "visitBody": "See the work in progress, pick colour samples, or just talk through your furniture idea with us."
   },
   "footer": {
     "tagline": "The workshop behind Wood Knots. Handmade furniture and wood products, made to order.",

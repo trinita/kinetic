@@ -22,13 +22,14 @@ To remove someone's access, delete their entry from `ADMIN_USERS` and redeploy. 
 
 All text on the website that isn't a menu label lives here, as Markdown files:
 
-| Folder          | What                                           | Web page                         |
-| --------------- | ---------------------------------------------- | -------------------------------- |
-| `services/`     | Services                                       | `/layanan`                       |
-| `case-studies/` | Projects (finished work for a client or place) | `/proyek`, `/proyek/<nama-file>` |
-| `blog/`         | Articles (care tips, behind the scenes…)       | `/blog`, `/blog/<nama-file>`     |
-| `team/`         | Team members                                   | `/tentang/tim`                   |
-| `pages/about.*` | The story on the About page                    | `/tentang`                       |
+| Folder               | What                                                                                 | Web page                         |
+| -------------------- | ------------------------------------------------------------------------------------ | -------------------------------- |
+| `services/`          | Services                                                                             | `/layanan`                       |
+| `case-studies/`      | Projects (finished work for a client or place)                                       | `/proyek`, `/proyek/<nama-file>` |
+| `blog/`              | Articles (care tips, behind the scenes…)                                             | `/blog`, `/blog/<nama-file>`     |
+| `team/`              | Team members                                                                         | `/tentang/tim`                   |
+| `pages/about.*`      | The story on the About page                                                          | `/tentang`                       |
+| `pages/home-story.*` | "Dari kayu mentah hingga finishing" steps on the homepage (`steps:` list with photo) | `/`                              |
 
 ## Two files per item
 

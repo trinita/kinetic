@@ -5,7 +5,7 @@ import { ChatWidget } from "@/components/chat/chat-widget";
 import { chatEnabled } from "@/lib/ai/config";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 import { href, locales } from "@/lib/i18n/routing";
-import { fraunces, jakarta } from "@/lib/fonts";
+import { fraunces, inter, jakarta } from "@/lib/fonts";
 import "../globals.css";
 
 export async function generateStaticParams() {
@@ -26,7 +26,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
   return (
-    <html lang={locale} className={`${fraunces.variable} ${jakarta.variable} h-full antialiased`}>
+    <html
+      lang={locale}
+      className={`${fraunces.variable} ${jakarta.variable} ${inter.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col font-sans">
         <Header />
         <main className="flex-1">{children}</main>

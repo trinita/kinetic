@@ -45,3 +45,7 @@ next-env.d.ts
 # playwright
 /playwright-report
 /test-results
+
+# Superdesign scratch files
+.superdesign/tmp/
+.superdesign/init/

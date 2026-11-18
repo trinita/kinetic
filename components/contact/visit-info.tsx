@@ -39,7 +39,7 @@ export function VisitInfo({ dict }: { dict: Dictionary }) {
 }
 
 /** Google Maps embed of the workshop location (no API key needed). */
-export function WorkshopMap({ title }: { title: string }) {
+export function WorkshopMap({ title, className = "md:h-full" }: { title: string; className?: string }) {
   const q = encodeURIComponent(`${site.address.street}, ${site.address.area}, ${site.address.city}`);
   return (
     <iframe
@@ -47,7 +47,7 @@ export function WorkshopMap({ title }: { title: string }) {
       src={`https://www.google.com/maps?q=${q}&output=embed`}
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
-      className="border-border h-80 w-full rounded-3xl border md:h-full md:min-h-96"
+      className={`border-border h-80 w-full rounded-3xl border md:min-h-96 ${className}`}
     />
   );
 }

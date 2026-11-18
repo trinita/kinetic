@@ -9,7 +9,7 @@ import path from "node:path";
 import type { z } from "zod";
 import type { Locale } from "@/lib/i18n/routing";
 import { parse as parseYaml } from "yaml";
-import { bodyHasTodo, parseDoc, stripTodos } from "./parse";
+import { bodyHasTodo, parseDoc, stripTodos, withoutTodoLines } from "./parse";
 import * as s from "./schemas";
 
 // A fixed path so the bundler ships only content/ (tests point process.cwd() at fixtures instead).
@@ -142,7 +142,7 @@ function localizeProduct(e: { slug: string; id: ProductFile }, locale: Locale) {
       src: img.image,
       alt: (locale === "en" ? img.altEn : undefined) ?? img.alt ?? p.title,
     })),
-    body: (en?.body || p.body).trim(),
+    body: withoutTodoLines(en?.body || p.body),
   };
 }
 
@@ -167,7 +167,7 @@ export function getServices(locale: Locale) {
         title: en?.title ?? e.id.title,
         summary: en?.summary ?? e.id.summary,
         image: e.id.image,
-        body: (en && e.enBody) || e.idBody,
+        body: withoutTodoLines((en && e.enBody) || e.idBody),
       };
     })
     .sort((a, b) => a.order - b.order);
@@ -192,7 +192,7 @@ export function getArticles(kind: ArticleKind, locale: Locale) {
         location: e.id.location,
         products: e.id.products,
         cover: e.id.cover && { src: e.id.cover.src, alt: en?.cover?.alt ?? e.id.cover.alt ?? "" },
-        body: (en && e.enBody) || e.idBody,
+        body: withoutTodoLines((en && e.enBody) || e.idBody),
       };
     })
     .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0));
@@ -214,7 +214,7 @@ export function getTeam(locale: Locale) {
         role: en?.role ?? e.id.role,
         order: e.id.order,
         photo: e.id.photo && { src: e.id.photo.src, alt: e.id.photo.alt ?? e.id.name },
-        body: (en && e.enBody) || e.idBody,
+        body: withoutTodoLines((en && e.enBody) || e.idBody),
       };
     })
     .sort((a, b) => a.order - b.order);
@@ -229,7 +229,16 @@ export function getPage(locale: Locale, slug: string) {
   return {
     draft: e.id.status !== "published",
     title: en?.title ?? e.id.title,
-    body: (en && e.enBody) || e.idBody,
+    body: withoutTodoLines((en && e.enBody) || e.idBody),
+    steps: e.id.steps.map((step, i) => {
+      const t = en?.steps[i];
+      return {
+        label: t?.label ?? step.label,
+        title: t?.title ?? step.title,
+        body: t?.body ?? step.body,
+        image: { src: step.image.src, alt: t?.alt ?? step.image.alt },
+      };
+    }),
   };
 }
 

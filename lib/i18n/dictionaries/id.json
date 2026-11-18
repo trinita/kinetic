@@ -21,15 +21,15 @@
     "switchLanguage": "Ganti bahasa"
   },
   "home": {
-    "eyebrow": "Bengkel kayu di balik Wood Knots",
-    "title": "Dibuat dengan tangan, untuk dipakai seumur hidup.",
-    "lead": "Meja, kursi, rak, dan produk kayu lainnya yang kami kerjakan di bengkel sendiri — dari memilih kayu hingga finishing terakhir. Ceritakan kebutuhan Anda, kami buatkan.",
+    "title": "Setiap goresan memiliki cerita.",
+    "lead": "Lihat bagaimana kami mengubah kayu mentah menjadi karya seni fungsional, langsung dari bengkel kami di Jatiasih.",
     "ctaProducts": "Lihat produk",
     "ctaWhatsapp": "Pesan via WhatsApp",
     "whatsappMessage": "Halo Kinetic, saya ingin bertanya tentang produk kayu Anda.",
     "featuredTitle": "Karya pilihan",
     "featuredIntro": "Beberapa karya yang baru saja selesai di bengkel kami.",
     "seeAll": "Lihat semua produk",
+    "storyTitle": "Dari kayu mentah hingga finishing",
     "processTitle": "Cara memesan",
     "processIntro": "Semua karya dibuat sesuai pesanan. Begini prosesnya:",
     "steps": [
@@ -50,9 +50,9 @@
         "body": "Karya Anda bisa diambil langsung di bengkel atau kami bantu atur pengirimannya."
       }
     ],
-    "ctaTitle": "Punya ide furnitur sendiri?",
-    "ctaBody": "Ceritakan kepada kami. Kami senang membantu mewujudkannya.",
-    "ctaButton": "Ngobrol via WhatsApp"
+    "orderCta": "Mulai pesan sekarang",
+    "visitTitle": "Kunjungi bengkel kami",
+    "visitBody": "Lihat langsung proses pengerjaan, pilih contoh warna, atau sekadar mengobrol tentang ide furnitur Anda."
   },
   "footer": {
     "tagline": "Bengkel kayu di balik Wood Knots. Furnitur dan produk kayu buatan tangan, dikerjakan sesuai pesanan.",

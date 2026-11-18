@@ -46,6 +46,7 @@
   --color-on-accent-strong: var(--on-accent-strong);
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-sans: var(--font-jakarta), system-ui, sans-serif;
+  --font-hero: var(--font-inter), -apple-system, "Helvetica Neue", sans-serif;
 }
 
 body {

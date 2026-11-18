@@ -26,7 +26,7 @@ export default defineConfig({
       AI_PROVIDER: "mock",
       // Test-only admin account (password: e2e-test-password) saving to the throwaway copy.
       ADMIN_USERS:
-        "tester:scrypt$32768$1dR6wAQ7Z0q3Mav325MdGA==$3z1bbYixO+kgZipT7dlzhgJ6csWeXzf5jt1Gl7neFU4=",
+        "tester:scrypt:32768:1dR6wAQ7Z0q3Mav325MdGA==:3z1bbYixO+kgZipT7dlzhgJ6csWeXzf5jt1Gl7neFU4=",
       ADMIN_SESSION_SECRET: "e2e-session-secret-that-is-long-enough-123",
       ADMIN_STORAGE: "local",
       ADMIN_LOCAL_ROOT: ADMIN_ROOT,
