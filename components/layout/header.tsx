@@ -14,6 +14,7 @@ export async function Header() {
   const items = withContent(locale, mainNav).map((key) => ({
     href: href(locale, key),
     label: dict.nav[key],
+    exact: key === "home",
   }));
   const wa = whatsappLink(dict.home.whatsappMessage);
 

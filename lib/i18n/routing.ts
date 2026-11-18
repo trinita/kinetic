@@ -68,8 +68,17 @@ export function parsePublicPath(pathname: string): { locale: Locale; key: RouteK
 }
 
 /** Same page in another language. Falls back to that language's home page. */
+/**
+ * The address a visitor sees for a path. usePathname() reports the internal path of
+ * Indonesian pages ("/id/products") instead of the public one ("/produk").
+ */
+export function toPublicPath(pathname: string): string {
+  const decision = splitPath(pathname)[0] === defaultLocale ? resolveRequest(pathname) : null;
+  return decision?.type === "redirect" ? decision.pathname : pathname;
+}
+
 export function switchLocalePath(pathname: string, target: Locale): string {
-  const parsed = parsePublicPath(pathname);
+  const parsed = parsePublicPath(toPublicPath(pathname));
   if (!parsed) return href(target, "home");
   return href(target, parsed.key, parsed.rest.join("/"));
 }

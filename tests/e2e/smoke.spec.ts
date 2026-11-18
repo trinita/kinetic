@@ -31,6 +31,9 @@ test("WhatsApp buttons open a chat with the workshop number", async ({ page }) =
 test("language switcher keeps the visitor on the same page", async ({ page }) => {
   await page.goto("/produk");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Produk");
+  // Real links (crawlers, clicks before JavaScript loads), not just client-side navigation
+  await expect(page.getByRole("link", { name: "en", exact: true })).toHaveAttribute("href", "/en/products");
+  await expect(page.locator('header a[aria-current="page"]').first()).toHaveText("Produk");
   await page.getByRole("link", { name: "en", exact: true }).click();
   await expect(page).toHaveURL(/\/en\/products$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Products");

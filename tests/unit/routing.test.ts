@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { href, parsePublicPath, resolveRequest, switchLocalePath } from "@/lib/i18n/routing";
+import { href, parsePublicPath, resolveRequest, switchLocalePath, toPublicPath } from "@/lib/i18n/routing";
 
 describe("href", () => {
   it("builds Indonesian URLs at the root", () => {
@@ -32,6 +32,13 @@ describe("switchLocalePath", () => {
     expect(switchLocalePath("/en", "id")).toBe("/");
     expect(switchLocalePath("/produk", "id")).toBe("/produk");
   });
+
+  it("understands the internal paths usePathname() reports for Indonesian pages", () => {
+    expect(switchLocalePath("/id", "en")).toBe("/en");
+    expect(switchLocalePath("/id/products", "en")).toBe("/en/products");
+    expect(switchLocalePath("/id/about/team", "en")).toBe("/en/about/team");
+    expect(switchLocalePath("/id/products", "id")).toBe("/produk");
+  });
 });
 
 describe("resolveRequest", () => {
@@ -63,5 +70,14 @@ describe("resolveRequest", () => {
 
   it("lets unknown paths 404 in Indonesian", () => {
     expect(resolveRequest("/tidak-ada")).toEqual({ type: "rewrite", pathname: "/id/tidak-ada" });
+  });
+});
+
+describe("toPublicPath", () => {
+  it("turns internal Indonesian paths into the visible address", () => {
+    expect(toPublicPath("/id")).toBe("/");
+    expect(toPublicPath("/id/products/meja-jati")).toBe("/produk/meja-jati");
+    expect(toPublicPath("/en/products")).toBe("/en/products");
+    expect(toPublicPath("/produk")).toBe("/produk");
   });
 });

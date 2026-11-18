@@ -3,6 +3,7 @@ import type { Locale, RouteKey } from "@/lib/i18n/routing";
 
 /** Pages in the header navigation, in order. */
 export const mainNav = [
+  "home",
   "products",
   "services",
   "caseStudies",
@@ -13,6 +14,7 @@ export const mainNav = [
 
 /** Pages in the footer "Explore" column. */
 export const footerNav = [
+  "home",
   "products",
   "services",
   "caseStudies",
