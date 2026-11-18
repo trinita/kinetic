@@ -13,10 +13,13 @@ import { bodyHasTodo, parseDoc, stripTodos, withoutTodoLines } from "./parse";
 import * as s from "./schemas";
 
 // A fixed path so the bundler ships only content/ (tests point process.cwd() at fixtures instead).
-// SHOW_DRAFTS can be overridden (used by tests and the search index script).
+// Drafts show in dev and on Vercel preview deployments (they exist for reviewing work in progress);
+// SHOW_DRAFTS overrides both (used on the live site before launch, by tests and the search index script).
 const contentDir = () => path.join(process.cwd(), "content");
 const showDrafts = () =>
-  process.env.SHOW_DRAFTS ? process.env.SHOW_DRAFTS === "true" : process.env.NODE_ENV !== "production";
+  process.env.SHOW_DRAFTS
+    ? process.env.SHOW_DRAFTS === "true"
+    : process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV !== "production";
 
 type Entry<I, E> = { slug: string; id: I; idBody: string; en?: E; enBody?: string };
 

@@ -26,6 +26,16 @@ describe("product loader", () => {
     expect(draft?.leadTimeWeeks).toBeUndefined();
   });
 
+  it("shows drafts on Vercel preview deployments but not on production builds", () => {
+    useFixture("ok");
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("VERCEL_ENV", "preview");
+    expect(getProduct("id", "meja-draf")?.draft).toBe(true);
+    vi.stubEnv("VERCEL_ENV", "production");
+    expect(getProduct("id", "meja-draf")).toBeUndefined();
+    vi.unstubAllEnvs();
+  });
+
   it("uses English text and keeps facts from the Indonesian file", () => {
     useFixture("ok");
     process.env.SHOW_DRAFTS = "false";
