@@ -7,6 +7,15 @@ test("Indonesian home page is the default", async ({ page }) => {
   await expect(page).toHaveTitle(/Kinetic/);
 });
 
+test("workshop video opens in a player and closes again", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Putar video bengkel" }).click();
+  const player = page.getByRole("dialog", { name: /Video/ });
+  await expect(player.locator("video")).toHaveAttribute("src", "/videos/workshop.mp4");
+  await player.getByRole("button", { name: "Tutup video" }).click();
+  await expect(player).toBeHidden();
+});
+
 test("English home page lives under /en", async ({ page }) => {
   await page.goto("/en");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");

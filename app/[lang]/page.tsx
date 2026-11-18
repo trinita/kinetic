@@ -8,6 +8,7 @@ import { buttonStyles, InstagramLink, WhatsAppButton } from "@/components/ui/lin
 import { DraftBadge } from "@/components/ui/badges";
 import { ProductCard } from "@/components/product/product-card";
 import { toCard } from "@/components/product/to-card";
+import { WorkshopVideo } from "@/components/home/workshop-video";
 
 export default async function Home() {
   const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
@@ -37,6 +38,7 @@ export default async function Home() {
         />
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
+            <WorkshopVideo labels={{ button: t.videoButton, title: t.videoTitle, close: t.videoClose }} />
             <h1 className="font-hero text-fg text-5xl leading-[1.05] font-bold tracking-[-0.025em] text-balance sm:text-6xl md:text-7xl">
               {t.title}
             </h1>
