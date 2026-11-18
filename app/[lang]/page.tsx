@@ -39,7 +39,7 @@ export default async function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <WorkshopVideo labels={{ button: t.videoButton, title: t.videoTitle, close: t.videoClose }} />
-            <h1 className="font-hero text-fg text-5xl leading-[1.05] font-bold tracking-[-0.025em] text-balance sm:text-6xl md:text-7xl">
+            <h1 className="font-hero text-accent-strong text-5xl leading-[1.05] font-bold tracking-[-0.025em] text-balance sm:text-6xl md:text-7xl">
               {t.title}
             </h1>
             <p className="text-fg mt-6 max-w-xl text-lg leading-relaxed font-medium">{t.lead}</p>
